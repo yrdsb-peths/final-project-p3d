@@ -21,9 +21,9 @@ public class TitleScreen extends World
         //Button playButton = new Button(new GreenfootImage("e.png"), getHeight()/8, 4);
         addObject(new Button("Play", buttonHeight, 700.0/300.0, "Game"), getWidth()/2, getHeight()*10/20);
         addObject(new Button("Leaderboards", buttonHeight, 1350.0/300.0, "Leaderboards"), getWidth()/2, getHeight()*12/20);
-        addObject(new Button("EnemyHandbook", buttonHeight, 1600.0/300.0, "Enemy Handbook"), getWidth()/2, getHeight()*14/20);
-        addObject(new Button("Options", buttonHeight, 900.0/300.0, "Options"), getWidth()/2, getHeight()*16/20);
-        addObject(new Button("Exit", buttonHeight, 700.0/300.0, "Exit"), getWidth()/2, getHeight()*18/20);
+        //addObject(new Button("EnemyHandbook", buttonHeight, 1600.0/300.0, "Enemy Handbook"), getWidth()/2, getHeight()*14/20);
+        addObject(new Button("Options", buttonHeight, 900.0/300.0, "Options"), getWidth()/2, getHeight()*14/20);
+        addObject(new Button("Exit", buttonHeight, 700.0/300.0, "Exit"), getWidth()/2, getHeight()*16/20);
         //addObject(new Button(new GreenfootImage("e.png"), getHeight()/8, 4), getWidth()/2, getHeight()/4); 
         //addObject(new Bullet(1280, 720, 5, new GreenfootImage("e.png")), 0, 0);
     }

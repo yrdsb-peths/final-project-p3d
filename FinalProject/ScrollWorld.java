@@ -104,9 +104,9 @@ public abstract class ScrollWorld extends World
         }
         
         bigBackground.drawImage(background, 0,0);
-        bigBackground.drawImage(background, background.getWidth(),0);
-        bigBackground.drawImage(background, 0,background.getHeight());
-        bigBackground.drawImage(background, background.getWidth(),background.getHeight());
+        //bigBackground.drawImage(background, background.getWidth(),0);
+        //bigBackground.drawImage(background, 0,background.getHeight());
+        //bigBackground.drawImage(background, background.getWidth(),background.getHeight());
         
         back.clear();
         back.drawImage(bigBackground, scrollPosX,scrollPosY);

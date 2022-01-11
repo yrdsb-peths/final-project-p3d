@@ -22,7 +22,10 @@ public class Enemy extends ScrollActor
     public Enemy(double health, double damage){
         this.health = health;
         this.damage = damage;
-        setImage(new GreenfootImage("e.png"));
+        GreenfootImage image = new  GreenfootImage(100, 100);
+        image.setColor(Color.RED);
+        image.fill();
+        setImage(image);
         nextShot = (int) (Math.random()*firerate);
     }
     
@@ -45,7 +48,7 @@ public class Enemy extends ScrollActor
                 //double actualY = y - (getWorld().getCameraY() - (getWorld().getHeight()/2.0));
                 double actualX = getGlobalX();
                 double actualY = getGlobalY();
-                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 50, 50, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 10, 1.0, 1.0, false, "bullet"), (int) actualX, (int) actualY);
+                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 50, 50, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 2, 1.0, 1.0, false, "bullet"), (int) actualX, (int) actualY);
                 nextShot = (int) (Math.random()*firerateRandomFactor) + firerate;
             }else{
                 nextShot--;

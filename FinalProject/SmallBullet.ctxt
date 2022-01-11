@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=SmallBullet
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SmallBullet\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=globalX\ globalY\ width\ height\ targetX\ targetY\ bulletSpeed\ acceleration\ damage\ isPlayer\ imgName
+comment1.target=SmallBullet(double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ boolean,\ java.lang.String)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

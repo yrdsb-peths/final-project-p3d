@@ -8,12 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Game extends ScrollWorld
 {
-    private int SCREEN_WIDTH;
-    private int SCREEN_HEIGHT;
-    private int FULL_WIDTH;
-    private int FULL_HEIGHT;
+    public static int SCREEN_WIDTH;
+    public static int SCREEN_HEIGHT;
+    public static int FULL_WIDTH;
+    public static int FULL_HEIGHT;
     
-    private int wave = 10;
+    private int wave = 5;
     
     public static boolean isPaused;
         
@@ -27,6 +27,7 @@ public class Game extends ScrollWorld
         FULL_HEIGHT = 2560;
         
         setPaintOrder(Slider.class, Button.class, Bullet.class);
+        addObject(new Background(new GreenfootImage("GameBackground.png")), 1280, 1280);
         //setBackground(new GreenfootImage("GameBackground.png"));
         addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, (SCREEN_WIDTH/4) * -1, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), SCREEN_WIDTH/4, SCREEN_HEIGHT/2);
         addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, SCREEN_WIDTH*5/4, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("TransitionRight.png"), "Nothing", 0), SCREEN_WIDTH*3/4, SCREEN_HEIGHT/2);

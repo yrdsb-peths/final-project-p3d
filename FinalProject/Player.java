@@ -12,10 +12,10 @@ public class Player extends ScrollActor
     private int width = 25;
     private int height = 25;
 
-    private double leftBoundary = 640;
-    private double topBoundary = 360;
-    private double rightBoundary = 1920;
-    private double bottomBoundary = 2200;
+    private double leftBoundary;
+    private double topBoundary;
+    private double rightBoundary;
+    private double bottomBoundary;
     
     private double x;
     private double y;
@@ -53,6 +53,10 @@ public class Player extends ScrollActor
     //Add to world
     public void addedToWorld(World world)
     {
+        leftBoundary = Game.SCREEN_WIDTH/2 + 10;
+        rightBoundary = Game.FULL_WIDTH-leftBoundary;
+        topBoundary = Game.SCREEN_HEIGHT/2 + 10;
+        bottomBoundary = Game.FULL_HEIGHT-topBoundary;
         x = getX();
         y = getY();
     }
@@ -67,7 +71,8 @@ public class Player extends ScrollActor
             //  System.out.println("you are bad");
             //  Set game is Paused, show a retry screen blah blah blah
             //Game.isPaused = true;
-        }else if(!Game.isPaused){
+        }
+        if(!Game.isPaused){
             checkMovement();
             checkShot();
             checkDash();

@@ -1,15 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class NormalEnemy here.
+ * Write a description of class Background here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Boss extends Enemy
+public class Background extends ScrollActor
 {
-    public Boss(double health, double damage) {
-        super(health, damage);
+    
+    public Background(GreenfootImage img){
+        setImage(img);
     }
     
     public void act()

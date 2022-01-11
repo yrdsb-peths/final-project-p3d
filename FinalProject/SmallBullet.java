@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Write a description of class NormalBullet here.
+ * Write a description of class SmallBullet here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class NormalBullet extends Bullet
+public class SmallBullet extends Bullet
 {
     private int particleDelay = 3;
     private int particleDelayCounter = 0;
@@ -19,7 +19,7 @@ public class NormalBullet extends Bullet
     private int numOfFrames = 4;
     private List<GreenfootImage> images = new ArrayList<GreenfootImage>();
 
-    public NormalBullet(double globalX, double globalY, double width, double height, double targetX, double targetY, double bulletSpeed, double acceleration, double damage, boolean isPlayer, String imgName){
+    public SmallBullet(double globalX, double globalY, double width, double height, double targetX, double targetY, double bulletSpeed, double acceleration, double damage, boolean isPlayer, String imgName){
         super(globalX, globalY, width, height, targetX, targetY, bulletSpeed, acceleration, damage, isPlayer, imgName);
         for(int i = 1; i <= numOfFrames; i++){
             GreenfootImage img = new GreenfootImage(imgName + i + ".png");
@@ -34,7 +34,7 @@ public class NormalBullet extends Bullet
             checkCollision();
             if(!removed){
                 if(particleDelayCounter >= particleDelay){
-                    //handleEffects(1.5, 5, new GreenfootImage("bullet-particle.png"));
+                    handleEffects(1.5, 5, new GreenfootImage("bullet-particle.png"));
                     particleDelayCounter = 0;
                 }else{
                     particleDelayCounter++;
