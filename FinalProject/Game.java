@@ -28,8 +28,8 @@ public class Game extends ScrollWorld
         
         setPaintOrder(Slider.class, Button.class, Bullet.class);
         //setBackground(new GreenfootImage("GameBackground.png"));
-        addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, (SCREEN_WIDTH/4) * -1, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("b.png"), "Nothing", 0), SCREEN_WIDTH/4, SCREEN_HEIGHT/2);
-        addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, SCREEN_WIDTH*5/4, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("c.png"), "Nothing", 0), SCREEN_WIDTH*3/4, SCREEN_HEIGHT/2);
+        addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, (SCREEN_WIDTH/4) * -1, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), SCREEN_WIDTH/4, SCREEN_HEIGHT/2);
+        addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, SCREEN_WIDTH*5/4, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("TransitionRight.png"), "Nothing", 0), SCREEN_WIDTH*3/4, SCREEN_HEIGHT/2);
         addObject(new Player(new GreenfootImage("e.png")), 1280, 720);
         
     }
