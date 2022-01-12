@@ -57,8 +57,6 @@ public class NormalBullet extends Bullet
                     setImage(images.get(currentFrame-1));
                 }
                 frameCounter++;
-            }else{
-                System.out.println(x + " " + y);
             }
         }
     }
