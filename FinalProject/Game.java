@@ -18,7 +18,7 @@ public class Game extends ScrollWorld
     public static double rightBoundary;
     public static double bottomBoundary;
     
-    private int wave = 1;
+    private int wave = 3;
     
     public static boolean isPaused;
         

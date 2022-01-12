@@ -14,8 +14,8 @@ public class Enemy extends ScrollActor
     public double health;
     private double damage;
     
-    private int firerate = 10;
-    private int firerateRandomFactor = 1;
+    private int firerate = 1;
+    private int firerateRandomFactor = 0;
     private int bulletCount = 1;
     private int nextShot = (int) (Math.random()*firerate);
     
@@ -48,7 +48,7 @@ public class Enemy extends ScrollActor
                 //double actualY = y - (getWorld().getCameraY() - (getWorld().getHeight()/2.0));
                 double actualX = getGlobalX();
                 double actualY = getGlobalY();
-                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 50, 50, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 2, 1.0, 1.0, false, "bullet"), (int) actualX, (int) actualY);
+                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 50, 50, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 1.0, 1.0, false, "bullet"), getGlobalX() - getWorld().getCameraX(), getGlobalY() - getWorld().getCameraY());
                 nextShot = (int) (Math.random()*firerateRandomFactor) + firerate;
             }else{
                 nextShot--;

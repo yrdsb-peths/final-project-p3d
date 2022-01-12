@@ -116,7 +116,7 @@ public class Player extends ScrollActor
                 if(nextShot <= 0 && invincTime == 0){
                     double actualX = mouse.getX() + (getWorld().getCameraX() - (getWorld().getWidth()/2));
                     double actualY = mouse.getY() + (getWorld().getCameraY() - (getWorld().getHeight()/2));
-                    for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(getGlobalX(), getGlobalY(), 50, 10, actualX, actualY, 20, 1, damage, true, "bullet"), getGlobalX(), getGlobalY());
+                    for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(getGlobalX(), getGlobalY(), 50, 10, actualX, actualY, 20, 1, damage, true, "bullet"), getGlobalX() - getWorld().getCameraX(), getGlobalY() - getWorld().getCameraY());
                     nextShot = firerate;
                 }
                 mousePressed = true;
