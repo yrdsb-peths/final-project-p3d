@@ -13,21 +13,30 @@ public class Game extends ScrollWorld
     public static int FULL_WIDTH;
     public static int FULL_HEIGHT;
     
-    private int wave = 5;
+    public static double leftBoundary;
+    public static double topBoundary;
+    public static double rightBoundary;
+    public static double bottomBoundary;
+    
+    private int wave = 1;
     
     public static boolean isPaused;
         
     public Game()
     {   
-        super(1280, 720, 1, 2560, 2560);
+        super(1280, 720, 1, 2560, 2000);
         isPaused = false;
         SCREEN_WIDTH = 1280;
         SCREEN_HEIGHT = 720;
         FULL_WIDTH = 2560;
-        FULL_HEIGHT = 2560;
+        FULL_HEIGHT = 2000;
+        leftBoundary = SCREEN_WIDTH/2 + 10;
+        rightBoundary = FULL_WIDTH-leftBoundary;
+        topBoundary = SCREEN_HEIGHT/2 + 10;
+        bottomBoundary = FULL_HEIGHT-topBoundary;
         
         setPaintOrder(Slider.class, Button.class, Bullet.class);
-        addObject(new Background(new GreenfootImage("GameBackground.png")), 1280, 1280);
+        addObject(new Background(new GreenfootImage("GameBackground.png")), FULL_WIDTH/2, FULL_HEIGHT/2);
         //setBackground(new GreenfootImage("GameBackground.png"));
         addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, (SCREEN_WIDTH/4) * -1, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), SCREEN_WIDTH/4, SCREEN_HEIGHT/2);
         addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, SCREEN_WIDTH*5/4, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("TransitionRight.png"), "Nothing", 0), SCREEN_WIDTH*3/4, SCREEN_HEIGHT/2);

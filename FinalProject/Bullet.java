@@ -61,22 +61,26 @@ public class Bullet extends ScrollActor
         getWorld().addObject(new Particle(size, size, 0.2, 0.2, 0.0, 200, 0.98, image), (int) x, (int) y);
     }
 
-    public void checkCollision(){
+    public void checkCollision(int x, int y){
         if(isTouching(Enemy.class) && isPlayer){
             ((Enemy) getOneIntersectingObject(Enemy.class)).health -= damage;
+            System.out.println("hit1");
             removeSelf();
         }else if(isTouching(Player.class) && !isPlayer){
             Player p = getWorld().getObjects(Player.class).get(0);
             if(p.invincTime == 0){
                 p.health -= damage;
+                System.out.println("hit2");
                 removeSelf();
             }
-        }else if(getGlobalX() < 0 || getGlobalX() > getWorld().getFullWidth() || getGlobalY() < 0 || getGlobalY() > getWorld().getFullHeight()){
+        }else if(x < Game.leftBoundary || x > Game.rightBoundary || y < Game.topBoundary || y > Game.bottomBoundary){
+            System.out.println("hit3");
             removeSelf();
         }
     }
 
     public void removeSelf(){
+        
         for(int i = 0; i < 20; i++){
             getWorld().addObject(new Particle(width/3, height/3, 1, 1, 0.0, (int) (Math.random() * 100.0), 0.98, new GreenfootImage("bullet-particle.png")), (int) getGlobalX(), (int) getGlobalY());
         }

@@ -11,11 +11,6 @@ public class Player extends ScrollActor
 
     private int width = 25;
     private int height = 25;
-
-    private double leftBoundary;
-    private double topBoundary;
-    private double rightBoundary;
-    private double bottomBoundary;
     
     private double x;
     private double y;
@@ -53,10 +48,6 @@ public class Player extends ScrollActor
     //Add to world
     public void addedToWorld(World world)
     {
-        leftBoundary = Game.SCREEN_WIDTH/2 + 10;
-        rightBoundary = Game.FULL_WIDTH-leftBoundary;
-        topBoundary = Game.SCREEN_HEIGHT/2 + 10;
-        bottomBoundary = Game.FULL_HEIGHT-topBoundary;
         x = getX();
         y = getY();
     }
@@ -73,9 +64,11 @@ public class Player extends ScrollActor
             //Game.isPaused = true;
         }
         if(!Game.isPaused){
+            checkDash();
             checkMovement();
             checkShot();
-            checkDash();
+            checkBounds();
+            setGlobalLocation((int) x, (int) y);
         }
         
         //getWorld().addObject(new Particle(10, 10, 0.3, 0.3, 0.0, (int) (Math.random() * 40), new GreenfootImage("smoke.png")), (int) x, (int) y);
@@ -108,8 +101,6 @@ public class Player extends ScrollActor
 
         x = x + speedX;
         y = y + speedY;
-        checkBounds();
-        setGlobalLocation((int) x, (int) y);
         double camX = getWorld().getCameraX();
         double camY = getWorld().getCameraY();
         camX = camX + (x - camX) * 0.05;
@@ -159,15 +150,15 @@ public class Player extends ScrollActor
     }
 
     public void checkBounds(){
-        if(x < leftBoundary){
-            x = leftBoundary;
-        }else if(x > rightBoundary){
-            x = rightBoundary;
+        if(x < Game.leftBoundary + 2){
+            x = Game.leftBoundary + 2;
+        }else if(x > Game.rightBoundary - 2){
+            x = Game.rightBoundary - 2;
         }
-        if(y < topBoundary){
-            y = topBoundary;
-        }else if(y > bottomBoundary){
-            y = bottomBoundary;
+        if(y < Game.topBoundary + 2){
+            y = Game.topBoundary + 2;
+        }else if(y > Game.bottomBoundary - 2){
+            y = Game.bottomBoundary - 2;
         }
     }
 }

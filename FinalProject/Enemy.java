@@ -14,9 +14,9 @@ public class Enemy extends ScrollActor
     public double health;
     private double damage;
     
-    private int firerate = 200;
-    private int firerateRandomFactor = 200;
-    private int bulletCount = 16;
+    private int firerate = 10;
+    private int firerateRandomFactor = 1;
+    private int bulletCount = 1;
     private int nextShot = (int) (Math.random()*firerate);
     
     public Enemy(double health, double damage){

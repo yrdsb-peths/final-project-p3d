@@ -31,7 +31,7 @@ public class SmallBullet extends Bullet
     public void act()
     {
         if(!Game.isPaused){
-            checkCollision();
+            checkCollision((int) x, (int) y);
             if(!removed){
                 if(particleDelayCounter >= particleDelay){
                     handleEffects(1.5, 5, new GreenfootImage("bullet-particle.png"));
