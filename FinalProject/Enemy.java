@@ -48,7 +48,7 @@ public class Enemy extends ScrollActor
                 //double actualY = y - (getWorld().getCameraY() - (getWorld().getHeight()/2.0));
                 double actualX = getGlobalX();
                 double actualY = getGlobalY();
-                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 50, 50, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 1.0, 1.0, false, "bullet"), getGlobalX() - getWorld().getCameraX(), getGlobalY() - getWorld().getCameraY());
+                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 50, 50, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 1.0, 1.0, false, "bullet"), getGlobalX(), getGlobalY() );
                 nextShot = (int) (Math.random()*firerateRandomFactor) + firerate;
             }else{
                 nextShot--;
