@@ -55,7 +55,7 @@ public class Game extends ScrollWorld
                 int randY = (int) ((Math.random() * (FULL_HEIGHT-SCREEN_HEIGHT)) + (SCREEN_HEIGHT/2.0));
                 // randX and randY are their global positions
                 // 1000, 1000 is its global position!!!
-                addObject(new Enemy(1, 1), randX, randY);
+                addObject(new Enemy(1, 1, 5), randX, randY);
             }
             wave++;
         }

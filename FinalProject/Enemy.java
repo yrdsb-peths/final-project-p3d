@@ -19,7 +19,7 @@ public class Enemy extends ScrollActor
     private int bulletCount = 1;
     private int nextShot = (int) (Math.random()*firerate);
     
-    public Enemy(double health, double damage){
+    public Enemy(double health, double damage, double speed){
         this.health = health;
         this.damage = damage;
         GreenfootImage image = new  GreenfootImage(100, 100);
@@ -44,8 +44,6 @@ public class Enemy extends ScrollActor
                 removeSelf();
                 return;
             }else if(nextShot <= 0){
-                //double actualX = x - (getWorld().getCameraX() - (getWorld().getWidth()/2.0));
-                //double actualY = y - (getWorld().getCameraY() - (getWorld().getHeight()/2.0));
                 double actualX = getGlobalX();
                 double actualY = getGlobalY();
                 for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 1.0, 1.0, false, "bullet"), getGlobalX(), getGlobalY() );
@@ -53,12 +51,17 @@ public class Enemy extends ScrollActor
             }else{
                 nextShot--;
             }
+            
         }
+    }
+    
+    private void move(){
+        
     }
     
     private void removeSelf(){
         for(int i = 0; i < 10; i++){
-            getWorld().addObject(new Particle(3, 3, 2.0, 2.0, 0.0, (int) (Math.random() * 100), 0.95, new GreenfootImage("bullet-particle.png")), (int) x, (int) y);
+            getWorld().addObject(new Particle(20, 20, 2.0, 2.0, 0.0, (int) (Math.random() * 100), 0.95, new GreenfootImage("bullet-particle.png")), (int) x, (int) y);
         }
         getWorld().removeObject(this);
     }

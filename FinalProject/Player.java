@@ -12,8 +12,8 @@ public class Player extends ScrollActor
     private int width = 25;
     private int height = 25;
     
-    private double x;
-    private double y;
+    public static double x;
+    public static double y;
     private double speedX = 0;
     private double speedY = 0;
     private double MAX_SPEED = 7;
@@ -113,7 +113,7 @@ public class Player extends ScrollActor
         if(mouse != null){
             int buttonNumber = mouse.getButton();
             if (buttonNumber == 1 && Greenfoot.mousePressed(null) || mousePressed && !Greenfoot.mouseClicked(null)){
-                if(nextShot <= 0 && invincTime == 0){
+                if(nextShot <= 0 && !isDashing){
                     double actualX = mouse.getX() + (getWorld().getCameraX() - (getWorld().getWidth()/2));
                     double actualY = mouse.getY() + (getWorld().getCameraY() - (getWorld().getHeight()/2));
                     for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(getGlobalX(), getGlobalY(), 50, 10, actualX, actualY, 20, 1, damage, true, "bullet"), getGlobalX() - getWorld().getCameraX(), getGlobalY() - getWorld().getCameraY());
@@ -139,13 +139,14 @@ public class Player extends ScrollActor
                 dashCooldown -= 1;
             }
             
+        }
+        if(invincTime < 1){
+            setImage(img);
+            MAX_SPEED = 5;
+            isDashing = false;
         }else{
             invincTime -= 1;
-            if(invincTime < 1){
-                setImage(img);
-                MAX_SPEED = 5;
-                isDashing = false;
-            }
+            setImage(img_dashing);
         }
     }
 

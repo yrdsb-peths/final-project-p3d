@@ -69,6 +69,7 @@ public class Bullet extends ScrollActor
             Player p = getWorld().getObjects(Player.class).get(0);
             if(p.invincTime == 0){
                 p.health -= damage;
+                p.invincTime = 100;
                 removeSelf();
             }
         }else if(x < Game.leftBoundary || x > Game.rightBoundary || y < Game.topBoundary || y > Game.bottomBoundary){
@@ -77,7 +78,6 @@ public class Bullet extends ScrollActor
     }
 
     public void removeSelf(){
-        
         for(int i = 0; i < 20; i++){
             getWorld().addObject(new Particle(width/3, height/3, 1, 1, 0.0, (int) (Math.random() * 100.0), 0.98, new GreenfootImage("bullet-particle.png")), (int) getGlobalX(), (int) getGlobalY());
         }
