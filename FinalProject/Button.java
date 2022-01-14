@@ -56,6 +56,10 @@ public class Button extends Actor
             int HEIGHT = getWorld().getHeight();
             // when clicked, exit or transition to next scene with sliders
             switch(link){
+                case "music":
+                    break;
+                case "sfx":
+                    break;
                 case "Exit":
                     Greenfoot.stop();
                     break;

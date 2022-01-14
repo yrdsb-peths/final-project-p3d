@@ -10,9 +10,13 @@ public class TitleScreen extends World
 {
     private int WIDTH = 1280;
     private int HEIGHT = 720;
+    private GreenfootSound bg = new GreenfootSound("MenuBackgroundMusic.mp3");
     
     public TitleScreen(){
         super(1280, 720, 1, false);
+        bg.playLoop();
+        bg.pause();
+        bg.setVolume(40);
         setPaintOrder(Slider.class, Button.class);
         addObject(new Slider(WIDTH/2, HEIGHT, (WIDTH/4) * -1, HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), WIDTH/4, HEIGHT/2);
         addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*5/4, HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionRight.png"), "Nothing", 0), WIDTH*3/4, HEIGHT/2);
@@ -30,5 +34,15 @@ public class TitleScreen extends World
     
     public void act(){
         
+    }
+    
+    public void stopped()
+    {
+        bg.pause();
+    }
+     
+    public void started()
+    {
+        bg.playLoop();
     }
 }

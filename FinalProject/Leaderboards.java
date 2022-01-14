@@ -23,14 +23,14 @@ public class Leaderboards extends World
     private int HEIGHT = 720;
     private Map<String, Integer> scores = loadFile("scores.txt");
     private List<String> top10 = new ArrayList<String>();
-
+    
     public Leaderboards()
     {    
         super(1280, 720, 1, false);
         setPaintOrder(Slider.class, Text.class, Button.class);
         addObject(new Slider(WIDTH/2, HEIGHT, (WIDTH/4) * -1, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), WIDTH/4, HEIGHT/2);
         addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*5/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 0), WIDTH*3/4, HEIGHT/2);
-        addObject(new Button("Exit", getHeight()/20, 700.0/300.0, "TitleScreen"), getWidth()/2, getHeight()*47/50);
+        addObject(new Button("BackToMenu", getHeight()/15, 5, "TitleScreen"), getWidth()/2, getHeight()*18/20);
         for(Map.Entry<String, Integer> entry : scores.entrySet()){
             top10.add(entry.getKey());
         }
@@ -39,16 +39,16 @@ public class Leaderboards extends World
         //    System.out.println(str);
         //}
         //showText(top10.get(top10.size()-1), 100, 100);
-        addLabel(top10.size()-1, 330, 290);
-        addLabel(top10.size()-2, 330, 400);
-        addLabel(top10.size()-3, 330, 505);
-        addLabel(top10.size()-4, 330, 610);
+        addLabel(top10.size()-1, 330, 235);
+        addLabel(top10.size()-2, 330, 345);
+        addLabel(top10.size()-3, 330, 450);
+        addLabel(top10.size()-4, 330, 555);
         
-        addLabel(top10.size()-5, 885, 200);
-        addLabel(top10.size()-6, 885, 310);
-        addLabel(top10.size()-7, 885, 415);
-        addLabel(top10.size()-8, 885, 520);
-        addLabel(top10.size()-9, 885, 628);
+        addLabel(top10.size()-5, 885, 145);
+        addLabel(top10.size()-6, 885, 255);
+        addLabel(top10.size()-7, 885, 360);
+        addLabel(top10.size()-8, 885, 465);
+        addLabel(top10.size()-9, 885, 573);
     }
     
     public void addLabel(int name, int x, int y){

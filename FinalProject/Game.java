@@ -59,5 +59,10 @@ public class Game extends ScrollWorld
             }
             wave++;
         }
+        if(isPaused){
+            
+        }
     }
+    
+    
 }

@@ -1,11 +1,6 @@
 bob 5000
 jimmy 200
-schwarzenegger2 100
-chloe 2
+chloe 10
 argon 300
-schwarzenegger 300
 tef 2345
-asd 23804
-hacker 99999
 jake 500
-anon 8594
