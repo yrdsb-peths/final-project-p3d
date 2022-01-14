@@ -11,8 +11,8 @@ public class Button extends Actor
     private double baseHeight, currHeight, maxHeight, widthMulti;
     private String imgPath, link;
     private boolean isHovered;
-    public boolean notClickedBefore = true;
-    
+    public static boolean notClickedBefore = true;
+
     public Button(String imgPath, double height, double widthMulti, String link){
         this.baseHeight = height;
         this.currHeight = baseHeight;
@@ -20,27 +20,27 @@ public class Button extends Actor
         this.widthMulti = widthMulti;
         this.link = link;
         this.imgPath = imgPath;
-        GreenfootImage img = new GreenfootImage(imgPath + "-U" + ".png");
+        GreenfootImage img = getGreenfootImage(false);
         img.scale((int) (baseHeight*widthMulti), (int) baseHeight);
         setImage(img);
     }
-    
+
     public void act(){
         checkHover();
         checkClicked();
     }
-    
+
     // Checks if the button is hovered. If so, make the button grow. If not, shrink back to base size
     private void checkHover(){
         if(Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this) && currHeight > baseHeight){
-            GreenfootImage image = new GreenfootImage(imgPath + "-U" + ".png");
+            GreenfootImage image = getGreenfootImage(false);
             currHeight /= 1.05;
             if(currHeight < baseHeight) currHeight = baseHeight;
             image.scale((int) (currHeight*widthMulti), (int) currHeight);
             setImage(image);
             isHovered = false;
-        }else if(Greenfoot.mouseMoved(this) || isHovered){
-            GreenfootImage image = new GreenfootImage(imgPath + "-S" + ".png");
+        }else if((Greenfoot.mouseMoved(this) || isHovered )){
+            GreenfootImage image = getGreenfootImage(true);
             currHeight *= 1.05;
             if(currHeight > maxHeight) currHeight = maxHeight;
             image.scale((int) (currHeight*widthMulti), (int) currHeight);
@@ -49,6 +49,9 @@ public class Button extends Actor
         } 
     }
     
+    private GreenfootImage getGreenfootImage(boolean isBeingHovered){
+        return (link.equals("Music") || link.equals("Sfx") ? new GreenfootImage("Toggle-"+(TitleScreen.bgm.isPlaying() ? "On" : "Off")+".png") : (isBeingHovered ? new GreenfootImage(imgPath + "-S" + ".png") : new GreenfootImage(imgPath + "-U" + ".png")));
+    }
     // Checks if the button has been clicked
     private void checkClicked(){
         if(Greenfoot.mouseClicked(this) && notClickedBefore){
@@ -56,9 +59,15 @@ public class Button extends Actor
             int HEIGHT = getWorld().getHeight();
             // when clicked, exit or transition to next scene with sliders
             switch(link){
-                case "music":
+                case "Music":
+                    System.out.println("hit");
+                    if(TitleScreen.bgm.isPlaying()) TitleScreen.bgm.pause();
+                    else TitleScreen.bgm.playLoop();
+                    GreenfootImage image = getGreenfootImage(false);
+                    image.scale((int) (baseHeight*widthMulti), (int) baseHeight);
+                    setImage(image);
                     break;
-                case "sfx":
+                case "Sfx":
                     break;
                 case "Exit":
                     Greenfoot.stop();
@@ -70,7 +79,7 @@ public class Button extends Actor
                     getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*3/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 100), WIDTH*5/4, HEIGHT/2);
                     break;
             }
-            
+
         }
     }
 }

@@ -77,9 +77,6 @@ public class Slider extends Actor
                 case "Leaderboards":
                     Greenfoot.setWorld(new Leaderboards());
                     break;
-                case "Enemy Handbook":
-                    Greenfoot.setWorld(new EnemyHandbook());
-                    break;
                 case "Options":
                     Greenfoot.setWorld(new Options());
                     break;

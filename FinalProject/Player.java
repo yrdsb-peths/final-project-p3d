@@ -140,11 +140,12 @@ public class Player extends ScrollActor
             }
             
         }
-        if(invincTime < 1){
+        if(invincTime < 2){
             setImage(img);
             MAX_SPEED = 5;
             isDashing = false;
-        }else{
+        }
+        if(invincTime > 0){
             invincTime -= 1;
             setImage(img_dashing);
         }
