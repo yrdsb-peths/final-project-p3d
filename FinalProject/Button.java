@@ -50,7 +50,7 @@ public class Button extends Actor
     }
     
     private GreenfootImage getGreenfootImage(boolean isBeingHovered){
-        return (link.equals("Music") || link.equals("Sfx") ? new GreenfootImage("Toggle-"+(TitleScreen.bgm.isPlaying() ? "On" : "Off")+".png") : (isBeingHovered ? new GreenfootImage(imgPath + "-S" + ".png") : new GreenfootImage(imgPath + "-U" + ".png")));
+        return ((link.equals("Music") || link.equals("Sfx")) ? new GreenfootImage("Toggle-"+(TitleScreen.bgm.isPlaying() ? "On" : "Off")+".png") : (isBeingHovered ? new GreenfootImage(imgPath + "-S" + ".png") : new GreenfootImage(imgPath + "-U" + ".png")));
     }
     // Checks if the button has been clicked
     private void checkClicked(){
@@ -64,7 +64,7 @@ public class Button extends Actor
                     if(TitleScreen.bgm.isPlaying()) TitleScreen.bgm.pause();
                     else TitleScreen.bgm.playLoop();
                     GreenfootImage image = getGreenfootImage(false);
-                    image.scale((int) (baseHeight*widthMulti), (int) baseHeight);
+                    image.scale((int) (currHeight*widthMulti), (int) currHeight);
                     setImage(image);
                     break;
                 case "Sfx":

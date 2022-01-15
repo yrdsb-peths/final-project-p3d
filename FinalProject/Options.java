@@ -19,7 +19,7 @@ public class Options extends World
         addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*5/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 0), WIDTH*3/4, HEIGHT/2);
         addObject(new Button("MainMenu", getHeight()/15, 6, "TitleScreen"), getWidth()/2, getHeight()*16/20);
         addObject(new Button("Toggle", getHeight()/30, 2.8, "Music"), getWidth()/2, getHeight()*8/20);
-        addObject(new Button("Toggle", getHeight()/30, 2.8, "Sfx"), getWidth()/2, getHeight()*12/20);
+        addObject(new Button("Toggle", getHeight()/30, 2.8, "Sfx"), getWidth()/2, getHeight()*10/20);
         Button.notClickedBefore = true;
     }
 }
