@@ -11,6 +11,7 @@ public class TitleScreen extends World
     private int WIDTH = 1280;
     private int HEIGHT = 720;
     public static GreenfootSound bgm = new GreenfootSound("MenuBackgroundMusic.mp3");
+    public static boolean sfxOn = true;
     
     public TitleScreen(){
         super(1280, 720, 1, false);

@@ -58,16 +58,20 @@ public class Button extends Actor
             int WIDTH = getWorld().getWidth();
             int HEIGHT = getWorld().getHeight();
             // when clicked, exit or transition to next scene with sliders
+            GreenfootImage image;
             switch(link){
                 case "Music":
-                    System.out.println("hit");
                     if(TitleScreen.bgm.isPlaying()) TitleScreen.bgm.pause();
                     else TitleScreen.bgm.playLoop();
-                    GreenfootImage image = getGreenfootImage(false);
+                    image = getGreenfootImage(false);
                     image.scale((int) (currHeight*widthMulti), (int) currHeight);
                     setImage(image);
                     break;
                 case "Sfx":
+                    TitleScreen.sfxOn = !TitleScreen.sfxOn;
+                    image = getGreenfootImage(false);
+                    image.scale((int) (currHeight*widthMulti), (int) currHeight);
+                    setImage(image);
                     break;
                 case "Exit":
                     Greenfoot.stop();
