@@ -61,7 +61,7 @@ public class Enemy extends ScrollActor
     
     private void removeSelf(){
         for(int i = 0; i < 10; i++){
-            getWorld().addObject(new Particle(20, 20, 2.0, 2.0, 0.0, (int) (Math.random() * 100), 0.95, new GreenfootImage("bullet-particle.png")), (int) x, (int) y);
+            getWorld().addObject(new Particle(20, 20, 2.0, 2.0, 0.0, (int) (Math.random() * 100), 1, new GreenfootImage("bullet-particle.png")), (int) x, (int) y);
         }
         getWorld().removeObject(this);
     }

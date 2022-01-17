@@ -73,6 +73,8 @@ public class Button extends Actor
                     image.scale((int) (currHeight*widthMulti), (int) currHeight);
                     setImage(image);
                     break;
+                case "Nothing":
+                    break;
                 case "Exit":
                     Greenfoot.stop();
                     break;

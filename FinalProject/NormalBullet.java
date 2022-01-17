@@ -34,7 +34,7 @@ public class NormalBullet extends Bullet
             checkCollision((int) x, (int) y);
             if(!removed){
                 if(particleDelayCounter >= particleDelay){
-                    //handleEffects(1.5, 5, new GreenfootImage("bullet-particle.png"));
+                    handleEffects(1.5, 5, new GreenfootImage("bullet-particle.png"));
                     particleDelayCounter = 0;
                 }else{
                     particleDelayCounter++;
