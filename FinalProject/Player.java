@@ -70,9 +70,7 @@ public class Player extends ScrollActor
             checkBounds();
             setGlobalLocation((int) x, (int) y);
         }
-        
-        //getWorld().addObject(new Particle(10, 10, 0.3, 0.3, 0.0, (int) (Math.random() * 40), new GreenfootImage("smoke.png")), (int) x, (int) y);
-        //setLocation((int)x, (int)y);
+        moveCamera();
     }
 
     public void checkMovement(){
@@ -101,6 +99,9 @@ public class Player extends ScrollActor
 
         x = x + speedX;
         y = y + speedY;
+    }
+    
+    private void moveCamera(){
         double camX = getWorld().getCameraX();
         double camY = getWorld().getCameraY();
         camX = camX + (x - camX) * 0.05;
@@ -132,7 +133,7 @@ public class Player extends ScrollActor
             if(Greenfoot.isKeyDown("space") && dashCooldown == 0){
                 MAX_SPEED = 15;
                 invincTime = 15;
-                dashCooldown = 50;
+                dashCooldown = 25;
                 isDashing = true;
                 setImage(img_dashing);
             }else if(dashCooldown > 0){

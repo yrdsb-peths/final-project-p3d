@@ -64,6 +64,7 @@ public class Bullet extends ScrollActor
     public void checkCollision(int x, int y){
         if(isTouching(Enemy.class) && isPlayer){
             ((Enemy) getOneIntersectingObject(Enemy.class)).health -= damage;
+            Game.score += Game.scoreAdder;
             removeSelf();
         }else if(isTouching(Player.class) && !isPlayer){
             Player p = getWorld().getObjects(Player.class).get(0);

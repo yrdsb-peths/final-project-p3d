@@ -10,8 +10,8 @@ public class SFX
 {
     public SFX(GreenfootSound sfx)
     {
-        
-        sfx.play();
-        
+        if(TitleScreen.sfxOn){
+            sfx.play();
+        }
     }
 }

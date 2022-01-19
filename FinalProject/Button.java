@@ -50,7 +50,12 @@ public class Button extends Actor
     }
     
     private GreenfootImage getGreenfootImage(boolean isBeingHovered){
-        return ((link.equals("Music") || link.equals("Sfx")) ? new GreenfootImage("Toggle-"+(TitleScreen.bgm.isPlaying() ? "On" : "Off")+".png") : (isBeingHovered ? new GreenfootImage(imgPath + "-S" + ".png") : new GreenfootImage(imgPath + "-U" + ".png")));
+        if(imgPath.equals("ToggleMusic")){
+            return new GreenfootImage("Toggle-"+(TitleScreen.bgm.isPlaying() ? "On" : "Off")+".png");
+        }else if(imgPath.equals("ToggleSfx")){
+            return new GreenfootImage("Toggle-"+(TitleScreen.sfxOn ? "On" : "Off")+".png");
+        }
+        return isBeingHovered ? new GreenfootImage(imgPath + "-S" + ".png") : new GreenfootImage(imgPath + "-U" + ".png");
     }
     // Checks if the button has been clicked
     private void checkClicked(){
@@ -63,29 +68,48 @@ public class Button extends Actor
                 case "Music":
                     if(TitleScreen.bgm.isPlaying()) TitleScreen.bgm.pause();
                     else TitleScreen.bgm.playLoop();
-                    image = getGreenfootImage(false);
-                    image.scale((int) (currHeight*widthMulti), (int) currHeight);
-                    setImage(image);
+                    TitleScreen.musicOn = !TitleScreen.musicOn;
                     break;
                 case "Sfx":
                     TitleScreen.sfxOn = !TitleScreen.sfxOn;
-                    image = getGreenfootImage(false);
-                    image.scale((int) (currHeight*widthMulti), (int) currHeight);
-                    setImage(image);
                     break;
-                case "Nothing":
+                case "Unpause":
+                    Game.isPaused = false;
+                    getWorld().removeObjects(Game.pauseScreen);
+                    break;
+                case "Login":
+                    if(!Login.user.getText().contains("~") && (Login.user.getText().length() > 0 && Login.user.getText().length() <= 10)){
+                        notClickedBefore = false;
+                        getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionLeft.png"), "TitleScreen", 100), (WIDTH/4) * -1, HEIGHT/2);
+                        getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*3/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 100), WIDTH*5/4, HEIGHT/2);
+                    }
                     break;
                 case "Exit":
                     Greenfoot.stop();
                     break;
+                case "Nothing":
+                    break;
                 default:
                     notClickedBefore = false;
-                    MouseInfo mouse = Greenfoot.getMouseInfo();
                     getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionLeft.png"), link, 100), (WIDTH/4) * -1, HEIGHT/2);
                     getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*3/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 100), WIDTH*5/4, HEIGHT/2);
                     break;
             }
 
+        }else{
+            GreenfootImage image;
+            switch(imgPath){
+                case "ToggleMusic":
+                    image = getGreenfootImage(false);
+                    image.scale((int) (currHeight*widthMulti), (int) currHeight);
+                    setImage(image);
+                    break;
+                case "ToggleSfx":
+                    image = getGreenfootImage(false);
+                    image.scale((int) (currHeight*widthMulti), (int) currHeight);
+                    setImage(image);
+                    break;
+            }
         }
     }
 }

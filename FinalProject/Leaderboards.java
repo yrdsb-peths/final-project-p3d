@@ -56,8 +56,8 @@ public class Leaderboards extends World
         if(name < 0){
             return;
         }
-        addObject(new Text(top10.get(name)), x, y);
-        addObject(new Text(scores.get(top10.get(name))+""), x + 210, y);
+        addObject(new Text(top10.get(name), Color.BLACK), x, y);
+        addObject(new Text(scores.get(top10.get(name))+"", Color.BLACK), x + 210, y);
     }
     
     public java.util.Map<String, Integer> loadFile(String filename) {
@@ -67,8 +67,8 @@ public class Leaderboards extends World
             file = new BufferedReader(new FileReader(filename));
             String input;
             while ((input = file.readLine()) != null) {
-                String name = input.split(" ")[0];
-                int score = Integer.parseInt(input.split(" ")[1]);
+                String name = input.split("~")[0];
+                int score = Integer.parseInt(input.split("~")[1]);
                 if(fileText.containsKey(name)){
                     if(score > fileText.get(name)){
                         fileText.put(name, score);

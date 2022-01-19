@@ -11,6 +11,7 @@ public class TitleScreen extends World
     private int WIDTH = 1280;
     private int HEIGHT = 720;
     public static GreenfootSound bgm = new GreenfootSound("MenuBackgroundMusic.mp3");
+    public static boolean musicOn = true;
     public static boolean sfxOn = true;
     
     public TitleScreen(){
@@ -18,7 +19,7 @@ public class TitleScreen extends World
         setPaintOrder(Slider.class, Button.class);
         addObject(new Slider(WIDTH/2, HEIGHT, (WIDTH/4) * -1, HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), WIDTH/4, HEIGHT/2);
         addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*5/4, HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionRight.png"), "Nothing", 0), WIDTH*3/4, HEIGHT/2);
-        setBackground(new GreenfootImage("MenuBackground-1.png"));
+        setBackground(new GreenfootImage("MenuBackground.png"));
         double buttonHeight = getHeight()/15;
         addObject(new Button("Play", buttonHeight, 700.0/300.0, "Game"), getWidth()/2, getHeight()*10/20);
         addObject(new Button("Leaderboards", buttonHeight, 1350.0/300.0, "Leaderboards"), getWidth()/2, getHeight()*12/20);
@@ -28,16 +29,10 @@ public class TitleScreen extends World
     }
     
     public void act(){
-        
-    }
-    
-    public void stopped()
-    {
-        bgm.pause();
-    }
-     
-    public void started()
-    {
-        bgm.playLoop();
+        if(musicOn && !bgm.isPlaying()){
+            bgm.playLoop();
+        }else if(!musicOn && bgm.isPlaying()){
+            bgm.pause();
+        }
     }
 }

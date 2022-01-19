@@ -13,6 +13,7 @@ public class Enemy extends ScrollActor
     
     public double health;
     private double damage;
+    private double movementSpeed = 2;
     
     private int firerate = 0;
     private int firerateRandomFactor = 0;
@@ -42,21 +43,28 @@ public class Enemy extends ScrollActor
         if(!Game.isPaused){
             if(health <= 0){
                 removeSelf();
+                Game.hasWon = true;
                 return;
             }else if(nextShot <= 0){
                 double actualX = getGlobalX();
                 double actualY = getGlobalY();
-                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 0.99, 1.0, false, "bullet"), getGlobalX(), getGlobalY() );
+                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 1.0, 1.0, false, "bullet"), getGlobalX(), getGlobalY() );
                 nextShot = (int) (Math.random()*firerateRandomFactor) + firerate;
             }else{
                 nextShot--;
             }
-            
+            move();
         }
     }
     
     private void move(){
-        
+        double dx = Player.x - x;
+        double dy = Player.y - y;
+        double theta = Math.atan2(dy, dx);
+        turnTowardsGlobalLocation((int) Player.x, (int) Player.y);
+        x += Math.cos(theta) * movementSpeed;
+        y += Math.sin(theta) * movementSpeed;
+        setGlobalLocation((int) x, (int) y);
     }
     
     private void removeSelf(){
