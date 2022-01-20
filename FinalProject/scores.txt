@@ -1,6 +1,0 @@
-bob~5000
-jimmy~200
-chloe~10
-argon~300
-tef~2345
-jake~500

@@ -27,7 +27,7 @@ public class Leaderboards extends World
     public Leaderboards()
     {    
         super(1280, 720, 1, false);
-        setPaintOrder(Slider.class, Text.class, Button.class);
+        setPaintOrder(Slider.class, Image.class, Button.class);
         addObject(new Slider(WIDTH/2, HEIGHT, (WIDTH/4) * -1, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), WIDTH/4, HEIGHT/2);
         addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*5/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 0), WIDTH*3/4, HEIGHT/2);
         addObject(new Button("BackToMenu", getHeight()/15, 5, "TitleScreen"), getWidth()/2, getHeight()*18/20);
@@ -56,8 +56,8 @@ public class Leaderboards extends World
         if(name < 0){
             return;
         }
-        addObject(new Text(top10.get(name), Color.BLACK), x, y);
-        addObject(new Text(scores.get(top10.get(name))+"", Color.BLACK), x + 210, y);
+        addObject(new Image(top10.get(name), Color.BLACK), x, y);
+        addObject(new Image(scores.get(top10.get(name))+"", Color.BLACK), x + 210, y);
     }
     
     public java.util.Map<String, Integer> loadFile(String filename) {

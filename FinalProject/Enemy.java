@@ -15,7 +15,7 @@ public class Enemy extends ScrollActor
     private double damage;
     private double movementSpeed = 2;
     
-    private int firerate = 0;
+    private int firerate = 2;
     private int firerateRandomFactor = 0;
     private int bulletCount = 1;
     private int nextShot = (int) (Math.random()*firerate);
@@ -68,6 +68,7 @@ public class Enemy extends ScrollActor
     }
     
     private void removeSelf(){
+        
         for(int i = 0; i < 10; i++){
             getWorld().addObject(new Particle(20, 20, 2.0, 2.0, 0.0, (int) (Math.random() * 100), 1, new GreenfootImage("bullet-particle.png")), (int) x, (int) y);
         }

@@ -51,9 +51,9 @@ public class Button extends Actor
     
     private GreenfootImage getGreenfootImage(boolean isBeingHovered){
         if(imgPath.equals("ToggleMusic")){
-            return new GreenfootImage("Toggle-"+(TitleScreen.bgm.isPlaying() ? "On" : "Off")+".png");
+            return new GreenfootImage("Toggle-"+(Utils.musicOn ? "On" : "Off")+".png");
         }else if(imgPath.equals("ToggleSfx")){
-            return new GreenfootImage("Toggle-"+(TitleScreen.sfxOn ? "On" : "Off")+".png");
+            return new GreenfootImage("Toggle-"+(Utils.sfxOn ? "On" : "Off")+".png");
         }
         return isBeingHovered ? new GreenfootImage(imgPath + "-S" + ".png") : new GreenfootImage(imgPath + "-U" + ".png");
     }
@@ -66,31 +66,32 @@ public class Button extends Actor
             GreenfootImage image;
             switch(link){
                 case "Music":
-                    if(TitleScreen.bgm.isPlaying()) TitleScreen.bgm.pause();
-                    else TitleScreen.bgm.playLoop();
-                    TitleScreen.musicOn = !TitleScreen.musicOn;
+                    Utils.musicOn = !Utils.musicOn;
+                    Utils.pauseMusic();
+                    Utils.playMusic();
+                    
                     break;
                 case "Sfx":
-                    TitleScreen.sfxOn = !TitleScreen.sfxOn;
+                    Utils.sfxOn = !Utils.sfxOn;
                     break;
                 case "Unpause":
                     Game.isPaused = false;
                     getWorld().removeObjects(Game.pauseScreen);
-                    break;
-                case "Login":
-                    if(!Login.user.getText().contains("~") && (Login.user.getText().length() > 0 && Login.user.getText().length() <= 10)){
-                        notClickedBefore = false;
-                        getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionLeft.png"), "TitleScreen", 100), (WIDTH/4) * -1, HEIGHT/2);
-                        getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*3/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 100), WIDTH*5/4, HEIGHT/2);
-                    }
                     break;
                 case "Exit":
                     Greenfoot.stop();
                     break;
                 case "Nothing":
                     break;
+                case "Login":
+                    if(Login.user.getText().contains("~") || Login.user.getText().length() == 0 || Login.user.getText().length() > 10){
+                        Utils.SFX("button_error.wav");
+                        break;
+                    }
+                    link = "TitleScreen";
                 default:
                     notClickedBefore = false;
+                    Utils.SFX("button_clicked.wav");
                     getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionLeft.png"), link, 100), (WIDTH/4) * -1, HEIGHT/2);
                     getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*3/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 100), WIDTH*5/4, HEIGHT/2);
                     break;
