@@ -46,8 +46,7 @@ public class Bullet extends ScrollActor
         double dx = targetX - x;
         double dy = targetY - y;
         double theta = Math.atan2(dy, dx);
-        
-        Utils.SFX("shoot.wav", 90);
+        Utils.SFX("shoot_bullet.wav");
         img.scale((int) width, (int) height);
         turnTowardsGlobalLocation((int) targetX, (int) targetY);
         setImage(img);
