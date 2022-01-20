@@ -47,7 +47,7 @@ public class Bullet extends ScrollActor
         double dy = targetY - y;
         double theta = Math.atan2(dy, dx);
         
-        Utils.SFX("shoot.wav");
+        Utils.SFX("shoot.wav", 90);
         img.scale((int) width, (int) height);
         turnTowardsGlobalLocation((int) targetX, (int) targetY);
         setImage(img);
@@ -73,6 +73,8 @@ public class Bullet extends ScrollActor
                 Utils.SFX("hit.wav");
                 p.health -= damage;
                 p.invincTime = 100;
+                Game.healthImage = new Image("Hearts-" + p.health + ".png", 40, 2.3);
+                getWorld().addObject(Game.healthImage, 100, 50);
                 removeSelf();
             }
         }else if(x < Game.leftBoundary || x > Game.rightBoundary || y < Game.topBoundary || y > Game.bottomBoundary){
@@ -81,7 +83,6 @@ public class Bullet extends ScrollActor
     }
 
     public void removeSelf(){
-        Utils.SFX("hit.wav");
         for(int i = 0; i < 20; i++){
             getWorld().addObject(new Particle(width/3, height/3, 1, 1, 0.0, (int) (Math.random() * 100.0), 0.98, new GreenfootImage("bullet-particle.png")), (int) getGlobalX(), (int) getGlobalY());
         }

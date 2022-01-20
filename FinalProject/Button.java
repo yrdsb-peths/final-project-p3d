@@ -40,6 +40,7 @@ public class Button extends Actor
             setImage(image);
             isHovered = false;
         }else if((Greenfoot.mouseMoved(this) || isHovered )){
+            if(!isHovered) Utils.SFX("button_hover.wav", 80);
             GreenfootImage image = getGreenfootImage(true);
             currHeight *= 1.05;
             if(currHeight > maxHeight) currHeight = maxHeight;
@@ -91,7 +92,7 @@ public class Button extends Actor
                     link = "TitleScreen";
                 default:
                     notClickedBefore = false;
-                    Utils.SFX("button_clicked.wav");
+                    Utils.SFX("button_clicked.wav", 90);
                     getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionLeft.png"), link, 100), (WIDTH/4) * -1, HEIGHT/2);
                     getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*3/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 100), WIDTH*5/4, HEIGHT/2);
                     break;

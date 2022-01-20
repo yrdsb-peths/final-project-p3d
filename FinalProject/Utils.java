@@ -26,9 +26,21 @@ public class Utils
         music = new GreenfootSound(newMusic);
     }
     
+    public static void changeMusicVolume(int vol){
+        music.setVolume(vol);
+    }
+    
     public static void SFX(String sfx){
         if(sfxOn){
             GreenfootSound s = new GreenfootSound(sfx);
+            s.play();
+        }
+    }
+    
+    public static void SFX(String sfx, int volume){
+        if(sfxOn){
+            GreenfootSound s = new GreenfootSound(sfx);
+            s.setVolume(volume);
             s.play();
         }
     }

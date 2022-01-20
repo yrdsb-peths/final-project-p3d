@@ -43,7 +43,7 @@ public class Enemy extends ScrollActor
         if(!Game.isPaused){
             if(health <= 0){
                 removeSelf();
-                Game.hasWon = true;
+                Game.won = true;
                 return;
             }else if(nextShot <= 0){
                 double actualX = getGlobalX();
@@ -54,6 +54,7 @@ public class Enemy extends ScrollActor
                 nextShot--;
             }
             move();
+            checkCollision();
         }
     }
     
@@ -65,6 +66,17 @@ public class Enemy extends ScrollActor
         x += Math.cos(theta) * movementSpeed;
         y += Math.sin(theta) * movementSpeed;
         setGlobalLocation((int) x, (int) y);
+    }
+    
+    private void checkCollision(){
+        if(isTouching(Player.class)){
+            Player p = getWorld().getObjects(Player.class).get(0);
+            if(p.invincTime == 0){
+                Utils.SFX("hit.wav");
+                p.health -= damage;
+                p.invincTime = 100;
+            }
+        }
     }
     
     private void removeSelf(){

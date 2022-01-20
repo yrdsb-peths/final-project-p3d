@@ -25,18 +25,20 @@ public class Game extends ScrollWorld
     public static int scoreAdder = 1;
     public static int score;
 
-    public static boolean hasWon;
-    public static boolean hasLost;
+    public static boolean hasEnded;
+    public static boolean won;
+    public static boolean lost;
     public static boolean isPaused;
     public static Image healthImage;
     public static List<Actor> pauseScreen = new ArrayList<Actor>();
-    public static List<Actor> winScreen = new ArrayList<Actor>();
 
     public Game()
     {   
         super(1280, 720, 1, 2560, 2000);
-        hasWon = false;
-        isPaused = false;
+        this.hasEnded = false;
+        this.won = false;
+        this.lost = false;
+        this.isPaused = false;
         SCREEN_WIDTH = 1280;
         SCREEN_HEIGHT = 720;
         FULL_WIDTH = 2560;
@@ -54,7 +56,9 @@ public class Game extends ScrollWorld
         addObject(new Player(new GreenfootImage("e.png")), 1280, 400);
         addObject(new Enemy(50, 1, 5), FULL_WIDTH/2, FULL_HEIGHT/2);
         
-        checkPlayerHealth();
+        Player p = getObjects(Player.class).get(0);
+        healthImage = new Image("Hearts-" + p.health + ".png", 40, 2.3);
+        addObject(healthImage, 100, 50);
         
         pauseScreen.add(new OverlayBackground(new GreenfootImage("OptionsBackground.png"), 600, 0.81));
         pauseScreen.add(new Button("ToggleMusic", getHeight()/30, 2.8, "Music"));
@@ -63,17 +67,20 @@ public class Game extends ScrollWorld
         pauseScreen.add(new Button("Sfx", getHeight()/13, 2.8, "Sfx"));
         pauseScreen.add(new Button("MainMenu", getHeight()/11, 5.5, "TitleScreen"));
         pauseScreen.add(new Button("ReturnToGame", getHeight()/11, 5.5, "Unpause"));
-
-        winScreen.add(new OverlayBackground(new GreenfootImage("WinBackground.png"), 720, 1.777));
-        winScreen.add(new Button("MainMenu", getHeight()/11, 5.5, "TitleScreen"));
-        
-        
     }
 
     //if get objct enemy.class .size() == 0, spawn new wave with 1 more enemy
     // After every few waves (1-5?), pick an upgrade?
     public void act(){
-        if(Greenfoot.isKeyDown("Q") && !isPaused){
+        if(hasEnded && !isPaused){
+            isPaused = true;
+            if(won) addObject(new OverlayBackground(new GreenfootImage("WinBackground.png"), 720, 1.777), getWidth()/2, getHeight()/2);
+            else addObject(new OverlayBackground(new GreenfootImage("LoseBackground.png"), 720, 1.777), getWidth()/2, getHeight()/2);
+            addObject(new Image("Score: " + score, Color.WHITE), getWidth()/2, getHeight()/2);
+            addObject(new Button("MainMenu", getHeight()/11, 5.5, "TitleScreen"), getWidth()/2, getHeight()*14/20);
+            //storeScore();
+            Button.notClickedBefore = true;
+        }else if(Greenfoot.isKeyDown("Q") && !isPaused){
             addObject(pauseScreen.get(0), getWidth()/2, getHeight()/2);
             addObject(pauseScreen.get(1), getWidth()/2 + 75, getHeight()*8/20);
             addObject(pauseScreen.get(2), getWidth()/2 - 50, getHeight()*8/20 - 3);
@@ -84,28 +91,6 @@ public class Game extends ScrollWorld
             Button.notClickedBefore = true;
             isPaused = true;
         }
-        if(hasWon && !isPaused){
-            isPaused = true;
-            winScreen.add(new Image("Score: " + score, Color.WHITE));
-            addObject(winScreen.get(0), getWidth()/2, getHeight()/2);
-            addObject(winScreen.get(2), getWidth()/2, getHeight()/2);
-            addObject(winScreen.get(1), getWidth()/2, getHeight()*14/20);
-            //storeScore();
-            Button.notClickedBefore = true;
-        }
-        if(isPaused){
-            ifPaused();
-        }
-    }
-
-    private void ifPaused(){
-
-    }
-
-    public void checkPlayerHealth(){
-        Player p = getObjects(Player.class).get(0);
-        healthImage = new Image("Hearts-" + p.health + ".png", 40, 2.3);
-        addObject(healthImage, 100, 50);
     }
     
     public void storeScore(){

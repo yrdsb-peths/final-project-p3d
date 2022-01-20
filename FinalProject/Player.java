@@ -59,9 +59,7 @@ public class Player extends ScrollActor
     public void act()
     {
         if(health <= 0){
-            //  System.out.println("you are bad");
-            //  Set game is Paused, show a retry screen blah blah blah
-            //Game.isPaused = true;
+            Game.hasEnded = true;
         }
         if(!Game.isPaused){
             checkDash();
