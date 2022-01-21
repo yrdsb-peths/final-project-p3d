@@ -85,7 +85,7 @@ public class Slider extends Actor
                 case "TitleScreen":
                     Greenfoot.setWorld(new TitleScreen());
                     break;
-                case "Login":
+                case "ChangeUser":
                     Greenfoot.setWorld(new Login());
                     break;
             }

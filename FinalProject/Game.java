@@ -48,8 +48,8 @@ public class Game extends ScrollWorld
         
         setPaintOrder(Slider.class, Button.class, Image.class, OverlayBackground.class, Bullet.class, Particle.class, Player.class, Enemy.class, Background.class);
         addObject(new Background(new GreenfootImage("GameBackground.png")), Utils.FULL_WIDTH/2, Utils.FULL_HEIGHT/2);
-        addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, (Utils.SCREEN_WIDTH/4) * -1, Utils.SCREEN_HEIGHT/2, 0.1, 1.05, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), Utils.SCREEN_WIDTH/4, Utils.SCREEN_HEIGHT/2);
-        addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, Utils.SCREEN_WIDTH*5/4, Utils.SCREEN_HEIGHT/2, 0.1, 1.05, new GreenfootImage("TransitionRight.png"), "Nothing", 0), Utils.SCREEN_WIDTH*3/4, Utils.SCREEN_HEIGHT/2);
+        addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, (Utils.SCREEN_WIDTH/4) * -1, Utils.SCREEN_HEIGHT/2, 0.1, 1.4, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), Utils.SCREEN_WIDTH/4, Utils.SCREEN_HEIGHT/2);
+        addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, Utils.SCREEN_WIDTH*5/4, Utils.SCREEN_HEIGHT/2, 0.1, 1.4, new GreenfootImage("TransitionRight.png"), "Nothing", 0), Utils.SCREEN_WIDTH*3/4, Utils.SCREEN_HEIGHT/2);
         addObject(new Player(new GreenfootImage("e.png")), 1280, 400);
         addObject(new Enemy(50, 1, 5), Utils.FULL_WIDTH/2, Utils.FULL_HEIGHT/2);
         
@@ -77,6 +77,9 @@ public class Game extends ScrollWorld
             addObject(new Image("Score: " + score, Color.WHITE), getWidth()/2, getHeight()/2);
             addObject(new Button("MainMenu", getHeight()/11, 5.5, "TitleScreen"), getWidth()/2, getHeight()*14/20);
             //storeScore();
+            Utils.pauseMusic();
+            Utils.setMusic("MenuBackgroundMusic.mp3");
+            Utils.playMusic();
             Button.notClickedBefore = true;
         }else if(Greenfoot.isKeyDown("Q") && !isPaused){
             addObject(pauseScreen.get(0), getWidth()/2, getHeight()/2);

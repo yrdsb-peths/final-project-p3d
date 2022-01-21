@@ -36,7 +36,7 @@ public class Login extends World
     public void started(){
         Utils.setMusic("MenuBackgroundMusic.mp3");
         Utils.playMusic();
-        Utils.changeMusicVolume(50);
+        Utils.changeMusicVolume(40);
     }
     
     public void stopped(){
