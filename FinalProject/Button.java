@@ -93,8 +93,9 @@ public class Button extends Actor
                 default:
                     notClickedBefore = false;
                     Utils.SFX("button_clicked.wav", 90);
-                    getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionLeft.png"), link, 100), (WIDTH/4) * -1, HEIGHT/2);
-                    getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*3/4, HEIGHT/2, 1.0, 1.1, new GreenfootImage("TransitionRight.png"), "Nothing", 100), WIDTH*5/4, HEIGHT/2);
+                    Utils.SFX("close_door.mp3");
+                    getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH/4, HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionLeft.png"), link, 100), (WIDTH/4) * -1, HEIGHT/2);
+                    getWorld().addObject(new Slider(WIDTH/2, HEIGHT, WIDTH*3/4, HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionRight.png"), "Nothing", 100), WIDTH*5/4, HEIGHT/2);
                     break;
             }
 

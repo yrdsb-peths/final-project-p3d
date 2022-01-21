@@ -18,15 +18,15 @@ public class Slider extends Actor
     private double speedY;
     private double sliderSpeed;
     private double acceleration;
-    
+
     private double width;
     private double height;
-    
+
     private int delay;
     private int count = 0;
-    
+
     private String link;
-    
+
     private GreenfootImage img;
 
     //Add to world
@@ -45,7 +45,7 @@ public class Slider extends Actor
         this.speedX = Math.cos(theta) * sliderSpeed;
         this.speedY = Math.sin(theta) * sliderSpeed;
     }
-    
+
     public Slider(double width, double height, double targetX, double targetY, double sliderSpeed, double acceleration, GreenfootImage img, String link, int delay){
         this.targetX = targetX;
         this.targetY = targetY;
@@ -57,8 +57,7 @@ public class Slider extends Actor
         this.img = img;
         this.delay = delay;
     }
-    
-    
+
     public void act()
     {
         // Add your action code here.
@@ -77,13 +76,17 @@ public class Slider extends Actor
                 case "Leaderboards":
                     Greenfoot.setWorld(new Leaderboards());
                     break;
+                case "Instructions":
+                    Greenfoot.setWorld(new Instructions());
+                    break;
                 case "Options":
                     Greenfoot.setWorld(new Options());
                     break;
                 case "TitleScreen":
                     Greenfoot.setWorld(new TitleScreen());
                     break;
-                case "Nothing":
+                case "Login":
+                    Greenfoot.setWorld(new Login());
                     break;
             }
         }else{
@@ -91,7 +94,7 @@ public class Slider extends Actor
         }
         setLocation((int)x, (int)y);
     }
-    
+
     public void checkLocation(){
         if(startX - targetX < 0){
             if(x > targetX){

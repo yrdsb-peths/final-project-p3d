@@ -10,10 +10,7 @@ import java.io.*;
  */
 public class Game extends ScrollWorld
 {
-    public static int SCREEN_WIDTH;
-    public static int SCREEN_HEIGHT;
-    public static int FULL_WIDTH;
-    public static int FULL_HEIGHT;
+
 
     public static double leftBoundary;
     public static double topBoundary;
@@ -39,22 +36,22 @@ public class Game extends ScrollWorld
         this.won = false;
         this.lost = false;
         this.isPaused = false;
-        SCREEN_WIDTH = 1280;
-        SCREEN_HEIGHT = 720;
-        FULL_WIDTH = 2560;
-        FULL_HEIGHT = 2000;
-        leftBoundary = SCREEN_WIDTH/2 + 10;
-        rightBoundary = FULL_WIDTH-leftBoundary;
-        topBoundary = SCREEN_HEIGHT/2 + 10;
-        bottomBoundary = FULL_HEIGHT-topBoundary;
+        leftBoundary = Utils.SCREEN_WIDTH/2 + 10;
+        rightBoundary = Utils.FULL_WIDTH-leftBoundary;
+        topBoundary = Utils.SCREEN_HEIGHT/2 + 10;
+        bottomBoundary = Utils.FULL_HEIGHT-topBoundary;
         score = 0;
         
+        Utils.pauseMusic();
+        Utils.setMusic("GameBackgroundMusic.mp3");
+        Utils.playMusic();
+        
         setPaintOrder(Slider.class, Button.class, Image.class, OverlayBackground.class, Bullet.class, Particle.class, Player.class, Enemy.class, Background.class);
-        addObject(new Background(new GreenfootImage("GameBackground.png")), FULL_WIDTH/2, FULL_HEIGHT/2);
-        addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, (SCREEN_WIDTH/4) * -1, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), SCREEN_WIDTH/4, SCREEN_HEIGHT/2);
-        addObject(new Slider(SCREEN_WIDTH/2, SCREEN_HEIGHT, SCREEN_WIDTH*5/4, SCREEN_HEIGHT/2, 0.1, 1.5, new GreenfootImage("TransitionRight.png"), "Nothing", 0), SCREEN_WIDTH*3/4, SCREEN_HEIGHT/2);
+        addObject(new Background(new GreenfootImage("GameBackground.png")), Utils.FULL_WIDTH/2, Utils.FULL_HEIGHT/2);
+        addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, (Utils.SCREEN_WIDTH/4) * -1, Utils.SCREEN_HEIGHT/2, 0.1, 1.05, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), Utils.SCREEN_WIDTH/4, Utils.SCREEN_HEIGHT/2);
+        addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, Utils.SCREEN_WIDTH*5/4, Utils.SCREEN_HEIGHT/2, 0.1, 1.05, new GreenfootImage("TransitionRight.png"), "Nothing", 0), Utils.SCREEN_WIDTH*3/4, Utils.SCREEN_HEIGHT/2);
         addObject(new Player(new GreenfootImage("e.png")), 1280, 400);
-        addObject(new Enemy(50, 1, 5), FULL_WIDTH/2, FULL_HEIGHT/2);
+        addObject(new Enemy(50, 1, 5), Utils.FULL_WIDTH/2, Utils.FULL_HEIGHT/2);
         
         Player p = getObjects(Player.class).get(0);
         healthImage = new Image("Hearts-" + p.health + ".png", 40, 2.3);
@@ -72,6 +69,7 @@ public class Game extends ScrollWorld
     //if get objct enemy.class .size() == 0, spawn new wave with 1 more enemy
     // After every few waves (1-5?), pick an upgrade?
     public void act(){
+        
         if(hasEnded && !isPaused){
             isPaused = true;
             if(won) addObject(new OverlayBackground(new GreenfootImage("WinBackground.png"), 720, 1.777), getWidth()/2, getHeight()/2);
