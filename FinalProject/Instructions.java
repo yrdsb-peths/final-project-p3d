@@ -14,9 +14,11 @@ public class Instructions extends World
     public Instructions()
     {    
         //display instructions and back to menu button 
-        super(1280, 720, 1);
+        super(1280, 720, 1, false);
         addObject(new OverlayBackground(new GreenfootImage("Instructions.png"), 720, 1.78), getWidth()/2, getHeight()/2);
         addObject(exitInstButton, 2*getWidth()/3-50, getHeight()*9/10);
+        Button.notClickedBefore = true;
+
     }
     
     public void act(){

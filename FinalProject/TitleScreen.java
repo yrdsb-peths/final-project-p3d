@@ -21,8 +21,9 @@ public class TitleScreen extends World
         double buttonHeight = getHeight()/15;
         addObject(new Button("Play", buttonHeight, 700.0/300.0, "Game"), getWidth()/2, getHeight()*10/20);
         addObject(new Button("Leaderboards", buttonHeight, 1350.0/300.0, "Leaderboards"), getWidth()/2, getHeight()*12/20);
-        addObject(new Button("Options", buttonHeight, 900.0/300.0, "Options"), getWidth()/2, getHeight()*14/20);
-        addObject(new Button("Exit", buttonHeight, 700.0/300.0, "Exit"), getWidth()/2, getHeight()*16/20);
+        addObject(new Button("Instructions", buttonHeight, 1350.0/300.0, "Instructions"), getWidth()/2, getHeight()*14/20);
+        addObject(new Button("Options", buttonHeight, 900.0/300.0, "Options"), getWidth()/2, getHeight()*16/20);
+        addObject(new Button("Exit", buttonHeight, 700.0/300.0, "Exit"), getWidth()/2, getHeight()*18/20);
         Button.notClickedBefore = true;
     }
 }
