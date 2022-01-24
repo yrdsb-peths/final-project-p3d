@@ -70,7 +70,6 @@ public class Button extends Actor
                     Utils.musicOn = !Utils.musicOn;
                     Utils.pauseMusic();
                     Utils.playMusic();
-                    
                     break;
                 case "Sfx":
                     Utils.sfxOn = !Utils.sfxOn;

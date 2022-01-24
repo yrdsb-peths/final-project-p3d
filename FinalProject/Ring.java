@@ -12,8 +12,8 @@ public class Ring extends AttackPatterns
     private int numOfRings;
     private int speed;
     public Ring(int numOfRings, int speed){
-        this.numOfRings = numOfRings;
-        this.speed = speed;
+        this.numOfRings = (int) (numOfRings*Utils.diffMod);
+        this.speed = (int) (speed/Utils.diffMod);
     }
 
     public void act()

@@ -61,8 +61,20 @@ public class Slider extends Actor
         if(x == targetX && y == targetY && count >= delay){
             getWorld().removeObject(this);
             switch(link){
-                case "Game":
+                case "Normal":
+                    Utils.setDiffMod(0.75);
                     Greenfoot.setWorld(new Game());
+                    break;
+                case "Hard":
+                    Utils.setDiffMod(1.0);
+                    Greenfoot.setWorld(new Game());
+                    break;
+                case "Chaos":
+                    Utils.setDiffMod(1.5);
+                    Greenfoot.setWorld(new Game());
+                    break;
+                case "DiffSelect":
+                    Greenfoot.setWorld(new DifficultySelectionScreen());
                     break;
                 case "Leaderboards":
                     Greenfoot.setWorld(new Leaderboards());

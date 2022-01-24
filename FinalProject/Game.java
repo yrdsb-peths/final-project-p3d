@@ -73,6 +73,7 @@ public class Game extends ScrollWorld
     public void act(){
         if(hasEnded && !isPaused){
             isPaused = true;
+            score *= Utils.diffMod;
             if(won){
                 addObject(new OverlayBackground(new GreenfootImage("WinBackground.png"), 720, 1.777), getWidth()/2, getHeight()/2);
                 score *= 1.5;
@@ -88,8 +89,6 @@ public class Game extends ScrollWorld
             Utils.playMusic();
             Button.notClickedBefore = true;
         }else if(!getObjects(Enemy.class).isEmpty()){
-            
-            
             if(Greenfoot.isKeyDown("escape") && !isPaused){
                 addObject(pauseScreen.get(0), getWidth()/2, getHeight()/2);
                 addObject(pauseScreen.get(1), getWidth()/2 + 75, getHeight()*8/20);

@@ -16,7 +16,7 @@ public class TitleScreen extends World
         addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, Utils.SCREEN_WIDTH*5/4, Utils.SCREEN_HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionRight.png"), "Nothing", 0), Utils.SCREEN_WIDTH*3/4, Utils.SCREEN_HEIGHT/2);
         setBackground(new GreenfootImage("MenuBackground.png"));
         double buttonHeight = getHeight()/15;
-        addObject(new Button("Play", buttonHeight, 700.0/300.0, "Game"), getWidth()/2, getHeight()*21/40);
+        addObject(new Button("Play", buttonHeight, 700.0/300.0, "DiffSelect"), getWidth()/2, getHeight()*21/40);
         addObject(new Button("Leaderboards", buttonHeight, 1350.0/300.0, "Leaderboards"), getWidth()/2, getHeight()*24/40);
         addObject(new Button("Instructions", buttonHeight, 1350.0/300.0, "Instructions"), getWidth()/2, getHeight()*27/40);
         addObject(new Button("Options", buttonHeight, 900.0/300.0, "Options"), getWidth()/2, getHeight()*30/40);
