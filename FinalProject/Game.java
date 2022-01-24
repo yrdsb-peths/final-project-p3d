@@ -81,7 +81,7 @@ public class Game extends ScrollWorld
             }
             addObject(new Image("Score: " + score, Color.WHITE), getWidth()/2, getHeight()/2);
             addObject(new Button("MainMenu", getHeight()/11, 5.5, "TitleScreen"), getWidth()/2, getHeight()*14/20);
-            //storeScore();
+            storeScore();
             Utils.pauseMusic();
             Utils.setMusic("MenuBackgroundMusic.mp3");
             Utils.changeMusicVolume(40);
