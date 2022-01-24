@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Utils
+comment1.params=
+comment1.target=void\ pauseMusic()
+comment2.params=
+comment2.target=void\ playMusic()
+comment3.params=newMusic
+comment3.target=void\ setMusic(java.lang.String)
+comment4.params=vol
+comment4.target=void\ changeMusicVolume(int)
+comment5.params=sfx
+comment5.target=void\ SFX(java.lang.String)
+comment6.params=sfx\ volume
+comment6.target=void\ SFX(java.lang.String,\ int)
+comment7.params=newDiffMod
+comment7.target=void\ setDiffMod(double)
+numComments=8

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Button
+comment0.text=\r\n\ This\ class\ creates\ the\ buttons\ that\ the\ players\ interact\ with\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=imgPath\ height\ widthMulti\ link
+comment1.target=Button(java.lang.String,\ double,\ double,\ java.lang.String)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ checkHover()
+comment4.params=isBeingHovered
+comment4.target=greenfoot.GreenfootImage\ getGreenfootImage(boolean)
+comment5.params=
+comment5.target=void\ checkClicked()
+numComments=6
