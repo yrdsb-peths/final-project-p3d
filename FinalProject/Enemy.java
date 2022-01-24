@@ -81,12 +81,9 @@ public class Enemy extends ScrollActor
         if(isTouching(Player.class)){
             Player p = getWorld().getObjects(Player.class).get(0);
             if(p.invincTime == 0){
-                Utils.SFX("hit.wav", 50);
+                Utils.SFX("hit.wav");
                 p.health -= damage;
                 p.invincTime = 100;
-                getWorld().removeObject(Game.healthImage);
-                Game.healthImage = new Image("Hearts-" + p.health + ".png", 40, 2.3);
-                getWorld().addObject(Game.healthImage, 100, 50);
             }
         }
     }
