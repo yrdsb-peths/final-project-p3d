@@ -10,26 +10,29 @@ public class Enemy extends ScrollActor
 {
     private double x;
     private double y;
-    
+    private int delay = 100;
+
     public double health;
     private double damage;
     private double movementSpeed = 2;
-    
-    private int firerate = 2;
-    private int firerateRandomFactor = 0;
-    private int bulletCount = 1;
+
+    private int firerate = 20;
+    private int firerateRandomFactor = 20;
     private int nextShot = (int) (Math.random()*firerate);
-    
+
+    private GreenfootImage image;
+
     public Enemy(double health, double damage, double speed){
         this.health = health;
         this.damage = damage;
-        GreenfootImage image = new  GreenfootImage(100, 100);
+        image = new  GreenfootImage(100, 100);
         image.setColor(Color.RED);
         image.fill();
         setImage(image);
+        this.image = image;
         nextShot = (int) (Math.random()*firerate);
     }
-    
+
     //Add to world
     public void addedToWorld(World world)
     {
@@ -38,17 +41,22 @@ public class Enemy extends ScrollActor
         globalX = (int) x;
         globalY = (int) y;
     }
-    
+
     public void act(){
-        if(!Game.isPaused){
+        if(delay >= 0){
+            delay--;
+            return;
+        }else if(!Game.isPaused){
             if(health <= 0){
                 removeSelf();
+                Game.hasEnded = true;
                 Game.won = true;
                 return;
             }else if(nextShot <= 0){
-                double actualX = getGlobalX();
-                double actualY = getGlobalY();
-                for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 1.0, 1.0, false, "bullet"), getGlobalX(), getGlobalY() );
+                //double actualX = getGlobalX();
+                //double actualY = getGlobalY();
+                //for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 1.0, 1.0, false, "bullet"), getGlobalX(), getGlobalY() );
+                getNextAttack();
                 nextShot = (int) (Math.random()*firerateRandomFactor) + firerate;
             }else{
                 nextShot--;
@@ -57,7 +65,7 @@ public class Enemy extends ScrollActor
             checkCollision();
         }
     }
-    
+
     private void move(){
         double dx = Player.x - x;
         double dy = Player.y - y;
@@ -67,7 +75,7 @@ public class Enemy extends ScrollActor
         y += Math.sin(theta) * movementSpeed;
         setGlobalLocation((int) x, (int) y);
     }
-    
+
     private void checkCollision(){
         if(isTouching(Player.class)){
             Player p = getWorld().getObjects(Player.class).get(0);
@@ -78,13 +86,41 @@ public class Enemy extends ScrollActor
             }
         }
     }
-    
+
     private void removeSelf(){
-        
+
         for(int i = 0; i < 10; i++){
             getWorld().addObject(new Particle(20, 20, 2.0, 2.0, 0.0, (int) (Math.random() * 100), 1, new GreenfootImage("bullet-particle.png")), (int) x, (int) y);
         }
         getWorld().removeObject(this);
     }
-    
+
+    private void getNextAttack(){
+        int r = Greenfoot.getRandomNumber(4);
+        double actualX = getGlobalX();
+        double actualY = getGlobalY();
+        switch(r){
+            case 0:
+                getWorld().addObject(new Ring(1+Greenfoot.getRandomNumber(3-1), 5+Greenfoot.getRandomNumber(20-5)), getGlobalX(), getGlobalY());
+                image.setColor(Color.PINK);
+                image.fill();
+                break;
+            case 1:
+                getWorld().addObject(new Spray(20+Greenfoot.getRandomNumber(50-20), 1+Greenfoot.getRandomNumber(3-1)), getGlobalX(), getGlobalY());
+                image.setColor(Color.BLUE);
+                image.fill();
+                break;
+            case 2:
+                getWorld().addObject(new DropBombs(1+Greenfoot.getRandomNumber(5-1)), getGlobalX(), getGlobalY());
+                image.setColor(Color.GREEN);
+                image.fill();
+                break;
+            case 3:
+                getWorld().addObject(new Ring(1+Greenfoot.getRandomNumber(3-1), 5+Greenfoot.getRandomNumber(20-5)), getGlobalX(), getGlobalY());
+                image.setColor(Color.GRAY);
+                image.fill();
+                break;
+
+        }
+    }
 }

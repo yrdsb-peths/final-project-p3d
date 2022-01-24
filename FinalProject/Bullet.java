@@ -46,8 +46,8 @@ public class Bullet extends ScrollActor
         double dx = targetX - x;
         double dy = targetY - y;
         double theta = Math.atan2(dy, dx);
-        Utils.SFX("shoot_bullet.wav", 80);
-        img.scale((int) width, (int) height);
+        Utils.SFX("shoot_bullet.wav", 75);
+        img.scale((int) this.width, (int) this.height);
         turnTowardsGlobalLocation((int) targetX, (int) targetY);
         setImage(img);
         //setGlobalLocation((int) globalX, (int) globalY);
@@ -69,7 +69,7 @@ public class Bullet extends ScrollActor
         }else if(isTouching(Player.class) && !isPlayer){
             Player p = getWorld().getObjects(Player.class).get(0);
             if(p.invincTime == 0){
-                Utils.SFX("hit.wav", 50);
+                Utils.SFX("hit.wav", 60);
                 p.health -= damage;
                 p.invincTime = 100;
                 Game.healthImage = new Image("Hearts-" + p.health + ".png", 40, 2.3);

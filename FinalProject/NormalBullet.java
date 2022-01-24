@@ -10,9 +10,6 @@ import java.util.List;
  */
 public class NormalBullet extends Bullet
 {
-    private int particleDelay = 3;
-    private int particleDelayCounter = 0;
-
     private int frameDelay = 5;
     private int frameCounter = 0;
     private int currentFrame = 1;
@@ -33,19 +30,13 @@ public class NormalBullet extends Bullet
         if(!Game.isPaused){
             checkCollision((int) x, (int) y);
             if(!removed){
-                if(particleDelayCounter >= particleDelay){
-                    handleEffects(1.5, 5, new GreenfootImage("bullet-particle.png"));
-                    particleDelayCounter = 0;
-                }else{
-                    particleDelayCounter++;
-                }
                 x += speedX;
                 y += speedY;
                 turnTowardsGlobalLocation((int) (x+speedX*1000), (int) (y+speedY*1000));
                 setGlobalLocation((int)x, (int)y);
                 speedX *= acceleration;
                 speedY *= acceleration;
-                if(Math.abs(speedX) + Math.abs(speedY) < 0.01){
+                if(Math.abs(speedX) + Math.abs(speedY) < 0.2){
                     removeSelf();
                 }
                 if(frameCounter > frameDelay){

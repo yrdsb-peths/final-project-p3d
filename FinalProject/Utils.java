@@ -1,20 +1,16 @@
 import greenfoot.*;
 
-/**
- * Write a description of class Utils here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Utils extends Actor 
+public class Utils
 {
     public static GreenfootSound music;
     public static boolean musicOn = true;
     public static boolean sfxOn = true;
+    public static int OPEN_VOL = 30;
     public static int SCREEN_WIDTH = 1280;
     public static int SCREEN_HEIGHT = 720;
     public static int FULL_WIDTH = 2560;
     public static int FULL_HEIGHT = 2000;
+    public static double diffMod = 0.5;
     
     public static void pauseMusic(){
         music.pause();
@@ -47,6 +43,10 @@ public class Utils extends Actor
             s.setVolume(volume);
             s.play();
         }
+    }
+    
+    public static void setDiffMod(double newDiffMod){
+        diffMod = newDiffMod;
     }
     
 }

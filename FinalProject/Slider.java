@@ -1,11 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Slider here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Slider extends Actor
 {
     private double x;
@@ -29,7 +23,6 @@ public class Slider extends Actor
 
     private GreenfootImage img;
 
-    //Add to world
     public void addedToWorld(World world)
     {
         x = this.getX();
@@ -60,9 +53,7 @@ public class Slider extends Actor
 
     public void act()
     {
-        // Add your action code here.
         if(startX - targetX != 0) x += speedX;
-        //x = Math.round(x * 100.0) / 100.0;
         if(startY - targetY != 0) y += speedY;
         speedX *= acceleration;
         speedY *= acceleration;
@@ -86,7 +77,7 @@ public class Slider extends Actor
                     Greenfoot.setWorld(new TitleScreen());
                     break;
                 case "ChangeUser":
-                    Greenfoot.setWorld(new Login());
+                    Greenfoot.setWorld(new Login(true));
                     break;
             }
         }else{

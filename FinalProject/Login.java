@@ -12,9 +12,16 @@ public class Login extends World
     private int WIDTH = 1280;
     private int HEIGHT = 720;
     
-    public Login()
+    public Login(){
+        this(false);
+    }
+    
+    public Login(boolean fromMenu)
     {
         super(1280, 720, 1, false);
+        if(fromMenu){
+            Utils.SFX("open_door.mp3", Utils.OPEN_VOL);
+        }
         setPaintOrder(Slider.class, Button.class, TextField.class, Image.class);
         addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, (Utils.SCREEN_WIDTH/4) * -1, Utils.SCREEN_HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionLeft.png"), "Nothing", 0), Utils.SCREEN_WIDTH/4, Utils.SCREEN_HEIGHT/2);
         addObject(new Slider(Utils.SCREEN_WIDTH/2, Utils.SCREEN_HEIGHT, Utils.SCREEN_WIDTH*5/4, Utils.SCREEN_HEIGHT/2, 1.0, 1.05, new GreenfootImage("TransitionRight.png"), "Nothing", 0), Utils.SCREEN_WIDTH*3/4, Utils.SCREEN_HEIGHT/2);
@@ -37,6 +44,7 @@ public class Login extends World
         Utils.setMusic("MenuBackgroundMusic.mp3");
         Utils.playMusic();
         Utils.changeMusicVolume(40);
+        Utils.SFX("open_door.mp3", Utils.OPEN_VOL);
     }
     
     public void stopped(){
