@@ -22,6 +22,9 @@ public class DifficultySelectionScreen extends World
         addObject(new Image("Normal", Color.BLACK), getWidth()/2 - 200, getHeight()/2-30);
         addObject(new Image("Hard", Color.BLACK), getWidth()/2, getHeight()/2-30);
         addObject(new Image("Chaos", Color.BLACK), getWidth()/2 + 200, getHeight()/2-30);
+        addObject(new Image("0.75x", Color.BLACK), getWidth()/2 - 200, getHeight()/2+125);
+        addObject(new Image("1x", Color.BLACK), getWidth()/2, getHeight()/2+125);
+        addObject(new Image("1.5x", Color.BLACK), getWidth()/2 + 200, getHeight()/2+125);
         addObject(new Button("BackToMenu", getHeight()/15, 5, "TitleScreen"), getWidth()/2, getHeight()*18/20);
         Button.notClickedBefore = true;
     }
