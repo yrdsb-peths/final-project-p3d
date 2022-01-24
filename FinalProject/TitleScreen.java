@@ -8,9 +8,6 @@ import java.lang.Math;
  */
 public class TitleScreen extends World
 {
-    private int WIDTH = 1280;
-    private int HEIGHT = 720;
-    
     public TitleScreen(){
         super(1280, 720, 1, false);
         setPaintOrder(Slider.class, Button.class);

@@ -26,7 +26,7 @@ public class RingSpray extends AttackPatterns
                 int tX = (int) p.x;
                 int tY = (int) p.y;
                 double inRadians = angle * Math.PI / 180;
-                getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, inRadians, 6, 1.0, 1.0, false, "bullet"), (int) actualX, (int) actualY);
+                getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, inRadians, 8, 1.0, 1.0, false, "bullet"), (int) actualX, (int) actualY);
                 angle += 10;
                 bulletsLeft--;
             }
