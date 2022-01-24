@@ -16,7 +16,7 @@ public class DropBombs extends AttackPatterns
     private int bombCount;
 
     public DropBombs(int bombCount){
-        this.bombCount = bombCount;
+        this.bombCount = (int) (bombCount*Utils.diffMod);
     }
 
     public void act(){

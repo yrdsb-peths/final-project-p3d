@@ -16,7 +16,7 @@ public class Enemy extends ScrollActor
     private double damage;
     private double movementSpeed = 2;
 
-    private int firerate = 20;
+    private int firerate = (int) (50.0/Utils.diffMod);
     private int firerateRandomFactor = 20;
     private int nextShot = (int) (Math.random()*firerate);
 
@@ -113,7 +113,7 @@ public class Enemy extends ScrollActor
                 image.fill();
                 break;
             case 2:
-                getWorld().addObject(new DropBombs(1+Greenfoot.getRandomNumber(5-1)), getGlobalX(), getGlobalY());
+                getWorld().addObject(new DropBombs(2+Greenfoot.getRandomNumber(5-2)), getGlobalX(), getGlobalY());
                 image.setColor(Color.GREEN);
                 image.fill();
                 break;
@@ -123,7 +123,7 @@ public class Enemy extends ScrollActor
                 image.fill();
                 break;
             case 4:
-                this.movementSpeed = 100;
+                this.movementSpeed = (int) (100.0*Utils.diffMod);
                 image.setColor(Color.YELLOW);
                 image.fill();
                 break;
