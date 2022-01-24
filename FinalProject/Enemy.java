@@ -74,6 +74,7 @@ public class Enemy extends ScrollActor
         x += Math.cos(theta) * movementSpeed;
         y += Math.sin(theta) * movementSpeed;
         setGlobalLocation((int) x, (int) y);
+        this.movementSpeed = 2;
     }
 
     private void checkCollision(){
@@ -96,9 +97,10 @@ public class Enemy extends ScrollActor
     }
 
     private void getNextAttack(){
-        int r = Greenfoot.getRandomNumber(4);
+        int r = Greenfoot.getRandomNumber(6);
         double actualX = getGlobalX();
         double actualY = getGlobalY();
+        Player p = getWorld().getObjects(Player.class).get(0);
         switch(r){
             case 0:
                 getWorld().addObject(new Ring(1+Greenfoot.getRandomNumber(3-1), 5+Greenfoot.getRandomNumber(20-5)), getGlobalX(), getGlobalY());
@@ -116,8 +118,18 @@ public class Enemy extends ScrollActor
                 image.fill();
                 break;
             case 3:
-                getWorld().addObject(new Ring(1+Greenfoot.getRandomNumber(3-1), 5+Greenfoot.getRandomNumber(20-5)), getGlobalX(), getGlobalY());
+                getWorld().addObject(new SprayTarget(10+Greenfoot.getRandomNumber(30-10), 1+Greenfoot.getRandomNumber(3-1)), getGlobalX(), getGlobalY());
                 image.setColor(Color.GRAY);
+                image.fill();
+                break;
+            case 4:
+                this.movementSpeed = 100;
+                image.setColor(Color.YELLOW);
+                image.fill();
+                break;
+            case 5:
+                getWorld().addObject(new RingSpray(), getGlobalX(), getGlobalY());
+                image.setColor(Color.CYAN);
                 image.fill();
                 break;
 

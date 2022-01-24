@@ -31,6 +31,13 @@ public class Bullet extends ScrollActor
     public GreenfootImage img;
 
     public Bullet(double globalX, double globalY, double width, double height, double targetX, double targetY, double bulletSpeed, double acceleration, double damage, boolean isPlayer, String imgName){
+        this(globalX, globalY, width, height, Math.atan2(targetY - globalY, targetX - globalX), bulletSpeed, acceleration, damage, isPlayer, imgName);
+        //double dx = targetX - x;
+        //double dy = targetY - y;
+        //double theta = Math.atan2(dy, dx);
+    }
+
+    public Bullet(double globalX, double globalY, double width, double height, double theta, double bulletSpeed, double acceleration, double damage, boolean isPlayer, String imgName){
         this.width = width;
         this.height = height;
         this.targetX = targetX;
@@ -43,9 +50,6 @@ public class Bullet extends ScrollActor
         this.img = new GreenfootImage(imgName + "1" + ".png");
         this.x = globalX;
         this.y = globalY;
-        double dx = targetX - x;
-        double dy = targetY - y;
-        double theta = Math.atan2(dy, dx);
         Utils.SFX("shoot_bullet.wav", 75);
         img.scale((int) this.width, (int) this.height);
         turnTowardsGlobalLocation((int) targetX, (int) targetY);
@@ -54,7 +58,7 @@ public class Bullet extends ScrollActor
         this.speedX = Math.cos(theta) * bulletSpeed;
         this.speedY = Math.sin(theta) * bulletSpeed;
     }
-
+    
     public void handleEffects(double divider, double min, GreenfootImage image){
         int size = (int) ((Math.random()*((width/divider) - min)) + min);
         //getWorld().addObject(new Particle(size, size, 0.2, 0.2, 0.0, 200, 0.98, image), (int) (getGlobalX() - (width/8)) + (int) (Math.random()*width/4), (int) (getGlobalY() - (height/8)) + (int) (Math.random()*height/4));

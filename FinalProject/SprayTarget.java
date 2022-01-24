@@ -1,23 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Ring here.
+ * Write a description of class SprayTarget here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ring extends AttackPatterns
+public class SprayTarget extends AttackPatterns
 {
     private int counter = 0;
-    private int numOfRings;
+    private int duration;
     private int speed;
-    public Ring(int numOfRings, int speed){
-        this.numOfRings = numOfRings;
+    
+    public SprayTarget(int duration, int speed){
+        this.duration = duration;
         this.speed = speed;
     }
 
-    public void act()
-    {
+    public void act(){
         if(Game.isPaused){
             return;
         }
@@ -27,12 +27,14 @@ public class Ring extends AttackPatterns
                 Enemy e = getWorld().getObjects(Enemy.class).get(0);
                 double actualX = e.getGlobalX();
                 double actualY = e.getGlobalY();
-                int numOfProjectiles = 10 + Greenfoot.getRandomNumber(20-10);
-                for(int i = 0; i < numOfProjectiles; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 6, 1.0, 1.0, false, "bullet"), getGlobalX(), getGlobalY());
-                numOfRings--;
+                Player p = getWorld().getObjects(Player.class).get(0);
+                int tX = (int) p.x;
+                int tY = (int) p.y;
+                getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, tX + Greenfoot.getRandomNumber(300) - 150, tY + Greenfoot.getRandomNumber(300) - 150, 6, 1.0, 1.0, false, "bullet"), (int) actualX, (int) actualY);
             }
             counter++;
-            if(numOfRings <= 0){
+            duration--;
+            if(duration <= 0){
                 getWorld().removeObject(this);
                 return;
             }

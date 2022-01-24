@@ -17,7 +17,11 @@ public class NormalBullet extends Bullet
     private List<GreenfootImage> images = new ArrayList<GreenfootImage>();
 
     public NormalBullet(double globalX, double globalY, double width, double height, double targetX, double targetY, double bulletSpeed, double acceleration, double damage, boolean isPlayer, String imgName){
-        super(globalX, globalY, width, height, targetX, targetY, bulletSpeed, acceleration, damage, isPlayer, imgName);
+        this(globalX, globalY, width, height, Math.atan2(targetY - globalY, targetX - globalX), bulletSpeed, acceleration, damage, isPlayer, imgName);
+    }
+    
+    public NormalBullet(double globalX, double globalY, double width, double height, double theta, double bulletSpeed, double acceleration, double damage, boolean isPlayer, String imgName){
+        super(globalX, globalY, width, height, theta, bulletSpeed, acceleration, damage, isPlayer, imgName);
         for(int i = 1; i <= numOfFrames; i++){
             GreenfootImage img = new GreenfootImage(imgName + i + ".png");
             img.scale((int) width, (int) height);

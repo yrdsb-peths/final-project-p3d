@@ -73,8 +73,12 @@ public class Game extends ScrollWorld
     public void act(){
         if(hasEnded && !isPaused){
             isPaused = true;
-            if(won) addObject(new OverlayBackground(new GreenfootImage("WinBackground.png"), 720, 1.777), getWidth()/2, getHeight()/2);
-            else addObject(new OverlayBackground(new GreenfootImage("LoseBackground.png"), 720, 1.777), getWidth()/2, getHeight()/2);
+            if(won){
+                addObject(new OverlayBackground(new GreenfootImage("WinBackground.png"), 720, 1.777), getWidth()/2, getHeight()/2);
+                score *= 1.5;
+            }else{
+                addObject(new OverlayBackground(new GreenfootImage("LoseBackground.png"), 720, 1.777), getWidth()/2, getHeight()/2);
+            }
             addObject(new Image("Score: " + score, Color.WHITE), getWidth()/2, getHeight()/2);
             addObject(new Button("MainMenu", getHeight()/11, 5.5, "TitleScreen"), getWidth()/2, getHeight()*14/20);
             //storeScore();
