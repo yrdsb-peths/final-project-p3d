@@ -2,12 +2,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Write a description of class CopyOfNormalBullet here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class PlayerBullet extends Bullet
 {
     public PlayerBullet(double globalX, double globalY, double width, double height, double targetX, double targetY, double bulletSpeed, double acceleration, double damage, boolean isPlayer, String imgName){

@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Spray here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Spray extends AttackPatterns
 {
     private int counter = 0;

@@ -2,9 +2,6 @@ import java.util.*;
 import greenfoot.*;
 import java.util.Random;
 
-/**
- * A glowing particle. Particles have a random movement vector and fly according to it, affected by gravity. They disappear once they hit the edge of the world.
- */
 public class Particle extends ScrollActor
 {
     private static double gravity;
