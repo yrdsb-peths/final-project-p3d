@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class dropBombs here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class DropBombs extends AttackPatterns
 {
     private int leftBoundary = Utils.SCREEN_WIDTH/2 + 10;

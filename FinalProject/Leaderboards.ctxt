@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Leaderboards
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Leaderboards\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Leaderboards()
 comment2.params=name\ x\ y

@@ -53,9 +53,6 @@ public class Enemy extends ScrollActor
                 Game.won = true;
                 return;
             }else if(nextShot <= 0){
-                //double actualX = getGlobalX();
-                //double actualY = getGlobalY();
-                //for(int i = 0; i < bulletCount; i++) getWorld().addObject(new NormalBullet(actualX, actualY, 30, 30, Math.random() * 500.0 + (actualX - 250.0), Math.random() * 500.0 + (actualY - 250.0), 7, 1.0, 1.0, false, "bullet"), getGlobalX(), getGlobalY() );
                 getNextAttack();
                 nextShot = (int) (Math.random()*firerateRandomFactor) + firerate;
             }else{

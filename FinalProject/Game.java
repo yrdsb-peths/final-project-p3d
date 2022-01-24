@@ -2,12 +2,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 import java.io.*;
 
-/**
- * Write a description of class Temp2 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Game extends ScrollWorld
 {
     public static double leftBoundary;
@@ -68,8 +62,6 @@ public class Game extends ScrollWorld
         pauseScreen.add(new Button("ReturnToGame", getHeight()/11, 5.5, "Unpause"));
     }
 
-    //if get objct enemy.class .size() == 0, spawn new wave with 1 more enemy
-    // After every few waves (1-5?), pick an upgrade?
     public void act(){
         if(hasEnded && !isPaused){
             isPaused = true;

@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Ring here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Ring extends AttackPatterns
 {
     private int counter = 0;

@@ -1,11 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.Math;
-/**
- * Write a description of class Temp here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class TitleScreen extends World
 {
     public TitleScreen(){

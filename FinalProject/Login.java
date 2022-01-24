@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Login here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Login extends World
 {
     public static TextField user;

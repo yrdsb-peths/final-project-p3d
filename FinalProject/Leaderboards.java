@@ -11,12 +11,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Write a description of class Leaderboards here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Leaderboards extends World
 {
     private int WIDTH = 1280;
@@ -37,10 +31,6 @@ public class Leaderboards extends World
             top10.add(entry.getKey());
         }
         bubbleSort(top10, top10.size());
-        //for(String str : top10){
-        //    System.out.println(str);
-        //}
-        //showText(top10.get(top10.size()-1), 100, 100);
         addLabel(top10.size()-1, 330, 235);
         addLabel(top10.size()-2, 330, 345);
         addLabel(top10.size()-3, 330, 450);
@@ -80,11 +70,11 @@ public class Leaderboards extends World
             }
         }
         catch (FileNotFoundException fnfe) {
-            //fnfe.printStackTrace();
+            fnfe.printStackTrace();
             return null;
         }
         catch (IOException ioe) {
-            //ioe.printStackTrace();
+            ioe.printStackTrace();
             return null;
         }
         finally {
@@ -95,7 +85,7 @@ public class Leaderboards extends World
                 ioe.printStackTrace();
             }
             catch (NullPointerException npe) {
-                //npe.printStackTrace();
+                npe.printStackTrace();
             }
         }
         return fileText;
