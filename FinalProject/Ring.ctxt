@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Ring
-comment1.params=numOfRings\ speed
-comment1.target=Ring(int,\ int)
-comment2.params=
-comment2.target=void\ act()
-numComments=3

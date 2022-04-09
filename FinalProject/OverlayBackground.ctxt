@@ -1,5 +1,0 @@
-#BlueJ class context
-comment0.target=OverlayBackground
-comment1.params=img\ height\ widthMulti
-comment1.target=OverlayBackground(greenfoot.GreenfootImage,\ double,\ double)
-numComments=2

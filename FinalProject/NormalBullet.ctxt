@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=NormalBullet
-comment1.params=globalX\ globalY\ width\ height\ targetX\ targetY\ bulletSpeed\ acceleration\ damage\ isPlayer\ imgName
-comment1.target=NormalBullet(double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ boolean,\ java.lang.String)
-comment2.params=globalX\ globalY\ width\ height\ theta\ bulletSpeed\ acceleration\ damage\ isPlayer\ imgName
-comment2.target=NormalBullet(double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ boolean,\ java.lang.String)
-comment3.params=
-comment3.target=void\ act()
-numComments=4

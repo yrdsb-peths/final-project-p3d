@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Bomb
-comment1.params=x\ y\ projCount
-comment1.target=Bomb(int,\ int,\ int)
-comment2.params=
-comment2.target=void\ act()
-numComments=3

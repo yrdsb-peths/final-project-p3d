@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Spray
-comment1.params=duration\ speed
-comment1.target=Spray(int,\ int)
-comment2.params=
-comment2.target=void\ act()
-numComments=3

@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Image
-comment1.params=img\ height\ widthMulti
-comment1.target=Image(java.lang.String,\ double,\ double)
-comment2.params=str\ c
-comment2.target=Image(java.lang.String,\ greenfoot.Color)
-comment3.params=img
-comment3.target=void\ changeImage(java.lang.String)
-numComments=4
